@@ -8,7 +8,7 @@ Lisää viite
 
 <h2>Lisää kirjaviite</h2>
 
-<form action="/create_todo" method="post">
+<form action="/create_reference" method="post">
   {% with messages = get_flashed_messages() %}
     {% if messages %}
       <ul>
@@ -24,7 +24,7 @@ Lisää viite
   <label for="content">Kirjoittanut:</label>
   <input type="text" name="author">
   <br>
-  <label for="content">painos vuosi:</label>
+  <label for="content">Painos vuosi:</label>
   <input type="text" name="year">
   <br>
 
@@ -32,5 +32,8 @@ Lisää viite
     Create
   </button>
 </form>
+<div>
+  <a href="/">Takaisin</a>
+</div>
 
 {% endblock %}

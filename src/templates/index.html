@@ -12,7 +12,12 @@ Todo app
   {% for reference in refernces %}
     <li style="display: flex">
       <div>
-        {{ reference }} 
+        {{ reference }}
+        <form action="/delete_reference" method="post">
+          <button type="submit">
+            Poista
+          </button>
+        </form>
       </div>
     </li>
   {% endfor %}
