@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 
 {% block title %}
-Create a new todo
+Lisää viite
 {% endblock %}
 
 {% block body %}
 
-<h2>Create a new todo</h2>
+<h2>Lisää kirjaviite</h2>
 
 <form action="/create_todo" method="post">
   {% with messages = get_flashed_messages() %}
@@ -18,9 +18,16 @@ Create a new todo
       </ul>
     {% endif %}
   {% endwith %}
-  <label for="content">Todo:</label>
-  <input type="text" name="content">
+  <label for="content">Teos:</label>
+  <input type="text" name="title">
   <br>
+  <label for="content">Kirjoittanut:</label>
+  <input type="text" name="author">
+  <br>
+  <label for="content">painos vuosi:</label>
+  <input type="text" name="year">
+  <br>
+
   <button type="submit">
     Create
   </button>
