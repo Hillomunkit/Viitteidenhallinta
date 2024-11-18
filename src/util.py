@@ -1,7 +1,8 @@
 class UserInputError(Exception):
     pass
 
-def validate_todo(content):
+#Tänne toteutetaan syötteiden tarkistus, käytä näitä app.py ja validate_reference_test.py
+def validate_reference(content):
     if len(content) < 5:
         raise UserInputError("Todo content length must be greater than 4")
 
