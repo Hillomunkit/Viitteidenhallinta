@@ -20,7 +20,7 @@ def reference_creation():
     year = request.form.get("year")
 
     try:
-        #Syötteiden tarkistus tulee tähän, tällä hetkellä ei tarkista syötteitä
+        validate_reference(title, author, year)
         create_reference(title, author, year)
         return redirect("/")
     except Exception as error:
