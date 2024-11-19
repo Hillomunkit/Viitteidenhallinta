@@ -19,13 +19,13 @@ Lisää viite
     {% endif %}
   {% endwith %}
   <label for="content">Teos:</label>
-  <input type="text" name="title" minlength="1" maxlength="100" oninvalid="alert('Teoksen nimi tulee olla vähintään 1-100 merkkiä');" required>
+  <input type="text" name="title" id="title" minlength="1" maxlength="100" oninvalid="alert('Teoksen nimi tulee olla vähintään 1-100 merkkiä');" required>
   <br>
   <label for="content">Kirjoittanut:</label>
-  <input type="text" name="author" minlength="1" maxlength="100" oninvalid="alert('Kirjailian nimi tulee olla vähintään 1-100 merkkiä');" required>
+  <input type="text" name="author" id="author" minlength="1" maxlength="100" oninvalid="alert('Kirjailian nimi tulee olla vähintään 1-100 merkkiä');" required>
   <br>
   <label for="content">Painos vuosi:</label>
-  <input type="text" name="year" minlength="4" maxlength="" oninvalid="alert('Vuosiluku tulee kirjoittaa muodossa xxxx');" required>
+  <input type="text" name="year" id="year" minlength="4" maxlength="" oninvalid="alert('Vuosiluku tulee kirjoittaa muodossa xxxx');" required>
   <br>
 
   <button type="submit">

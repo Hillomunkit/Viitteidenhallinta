@@ -2,12 +2,13 @@
 Library  SeleniumLibrary
 
 *** Variables ***
-${SERVER}     localhost:5001
-${DELAY}      0.5 seconds
-${HOME_URL}   http://${SERVER}
-${RESET_URL}  http://${SERVER}/reset_db
-${BROWSER}    chrome
-${HEADLESS}   false
+${SERVER}      localhost:5001
+${DELAY}       0.5 seconds
+${HOME_URL}    http://${SERVER}
+${RESET_URL}   http://${SERVER}/reset_db
+${CREATE_URL}  http://${SERVER}/new_reference
+${BROWSER}     chrome
+${HEADLESS}    false
 
 *** Keywords ***
 Open And Configure Browser
@@ -24,6 +25,12 @@ Open And Configure Browser
     END
     Open Browser  browser=${BROWSER}  options=${options}
 
-Reset Todos
+Reset Books
     Go To  ${RESET_URL}
+
+Go To Starting Page
+    Go To  ${HOME_URL}
+
+Go To New Reference Page
+    Go To  ${CREATE_URL}
 

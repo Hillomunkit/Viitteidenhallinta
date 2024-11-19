@@ -14,6 +14,7 @@ Todo app
       <div>
         {{ referenc }}
         <form action="/delete_reference" method="post">
+          <input type="hidden" name="reference" value="{{ referenc }}"/>
           <button type="submit">
             Poista
           </button>
