@@ -46,3 +46,20 @@ The app starts empty. To add references:
 After submitting a reference, you can:
   * View the list of created references.
   * Delete any reference you no longer need.
+
+# Definition of Done
+### 1. User Stories
+* Each user story is well-written and understandable
+* Each user story has well-defined acceptance criteria that are agreed on by the team and the customer
+  
+### 2. Code Quality
+* All code changes pass succesfully on the CI-server
+* The code follows a shared coding standard (e.g. linting rules)
+* The code is readable and maintainable by all team members
+
+### 3. Visibility
+* The customer can at any time access and view the code and the test results via the CI-server
+
+### 4. Testing
+* Newly implemented features have corresponding automated tests
+* The codes test coverage is at a reasonable level
