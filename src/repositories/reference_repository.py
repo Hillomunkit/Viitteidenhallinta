@@ -6,6 +6,7 @@ from entities.reference import Reference
 def get_references():
     sql = """
     SELECT 
+        id,
         title,
         author,
         year
@@ -14,7 +15,7 @@ def get_references():
     """
     result = db.session.execute(text(sql))
     references = result.fetchall()
-    return [Reference(reference[0], reference[1], reference[2]) for reference in references]
+    return [Reference(reference[0], reference[1], reference[2], reference[3]) for reference in references]
 
 def create_reference(title, author, year):
     sql = """
