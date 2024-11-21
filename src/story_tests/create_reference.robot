@@ -16,7 +16,7 @@ After adding a reference, there is one
     Set Title  test
     Set Author  test-author
     Set Year  2000
-    Click Button  Create
+    Click Button  Lisää
     Page Should Contain  test, test-author, 2000
 
 After adding two references, there are two
@@ -25,12 +25,12 @@ After adding two references, there are two
     Set Title  test1
     Set Author  test-author
     Set Year  2001
-    Click Button  Create
+    Click Button  Lisää
     Click Link  Lisää uusi viite
     Set Title  test2
     Set Author  author-test
     Set Year  2002
-    Click Button  Create
+    Click Button  Lisää
     Page Should Contain  test1, test-author, 2001
     Page Should Contain  test2, author-test, 2002
 

@@ -10,7 +10,7 @@ A book Reference Can Be Deleted
     Set Title  test
     Set Author  test-author
     Set Year  2000
-    Click Button  Create
+    Click Button  Lisää
     Page Should Contain  test, test-author, 2000
     Click Button  Poista
     Page Should not Contain  test, test-author, 2000
