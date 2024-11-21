@@ -9,12 +9,12 @@ Viitteidenhallinta
 <h2>Viitteet</h2>
 
 <ul>
-  {% for referenc in references %}
+  {% for reference in references %}
     <li style="display: flex">
       <div>
-        {{ referenc }}
+        {{ reference }}
         <form action="/delete_reference" method="post">
-          <input type="hidden" name="reference" value="{{ referenc }}"/>
+          <input type="hidden" name="reference" value="{{ reference.id }}"/>
           <button type="submit">
             Poista
           </button>
