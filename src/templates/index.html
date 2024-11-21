@@ -14,7 +14,7 @@ Viitteidenhallinta
       <div>
         {{ reference }}
         <form action="/delete_reference" method="post">
-          <input type="hidden" name="reference" value="{{ reference.id }}"/>
+          <input type="hidden" name="reference" value="{{ reference }}"/>
           <button type="submit">
             Poista
           </button>
