@@ -38,15 +38,8 @@ if test_env:
 
 @app.route("/delete_reference", methods=["POST"])
 def delete_ref():
-    reference = request.form.get("reference")
-
-    reference_values = reference.split(",")
-    title = reference_values[0].strip()
-    author = reference_values[1].strip()
-    year = reference_values[2].strip()
-    print(title, author, year)
-
-    delete_reference(title, author, year)
+    reference_id = request.form.get("reference_id")
+    delete_reference(reference_id)
 
     return redirect("/")
 

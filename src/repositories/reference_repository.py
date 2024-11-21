@@ -27,17 +27,13 @@ def create_reference(title, author, year):
     db.session.execute(text(sql), { "title": title, "author": author, "year": year })
     db.session.commit()
 
-def delete_reference(title, author, year):
+def delete_reference(reference_id):
     sql = """
     DELETE FROM
         books
     WHERE
-        title = :title
-    AND 
-        author = :author
-    AND
-        year = :year
+        id = :reference_id
     """
 
-    db.session.execute(text(sql), {"title": title, "author": author, "year": year})
+    db.session.execute(text(sql), {"reference_id": reference_id})
     db.session.commit()
