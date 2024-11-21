@@ -12,7 +12,8 @@ Viitteidenhallinta
   {% for reference in references %}
     <li style="display: flex">
       <div>
-        {{ reference }}
+        <p>{{ reference }}</p>
+        <pre>{{ reference.bibtex() }}</pre>
         <form action="/delete_reference" method="post">
           <input type="hidden" name="reference_id" value="{{ reference.id }}"/>
           <button type="submit">
