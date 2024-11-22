@@ -79,7 +79,7 @@ class TestReferenceValidation(unittest.TestCase):
     def test_too_small_year_raises_an_error(self):
         with self.assertRaises(UserInputError) as error:
             validate_reference(self.title, self.author, 999)
-        self.assertEqual(str(error.exception), f"Year must be between 1000 and {self.current_year}")
+        self.assertEqual(str(error.exception), f"Vuosi tulee olla 1000- {self.current_year} väliltä")
 
     def test_too_big_year_raises_an_error(self):
         with self.assertRaises(UserInputError) as error:
