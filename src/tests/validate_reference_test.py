@@ -15,42 +15,42 @@ class TestReferenceValidation(unittest.TestCase):
     def test_empty_title_raises_an_error(self):
         with self.assertRaises(UserInputError) as error:
             validate_reference("", self.author, self.year)
-        self.assertEqual(str(error.exception), "Title can't be empty")
+        self.assertEqual(str(error.exception), "Teos ei voi olla tyhjä")
 
     def test_only_a_space_in_title_raises_an_error(self):
         with self.assertRaises(UserInputError) as error:
             validate_reference(" ", self.author, self.year)
-        self.assertEqual(str(error.exception), "Title can't be empty")
+        self.assertEqual(str(error.exception), "Teos ei voi olla tyhjä")
 
     def test_none_title_raises_an_error(self):
         with self.assertRaises(UserInputError) as error:
             validate_reference(None, self.author, self.year)
-        self.assertEqual(str(error.exception), "Title can't be empty")
+        self.assertEqual(str(error.exception), "Teos ei voi olla tyhjä")
 
     def test_too_long_title_raises_an_error(self):
         with self.assertRaises(UserInputError) as error:
             validate_reference("A" * 101, self.author, self.year)
-        self.assertEqual(str(error.exception), "Maximum title length is 100 characters")
+        self.assertEqual(str(error.exception), "Teoksen nimi ei voi olla enempä kun 100 merkkiä")
 
     def test_empty_author_raises_an_error(self):
         with self.assertRaises(UserInputError) as error:
             validate_reference(self.title, "", self.year)
-        self.assertEqual(str(error.exception), "Author can't be empty")
+        self.assertEqual(str(error.exception), "Kirjailia ei voi olla tyhjä")
 
     def test_only_a_space_in_author_raises_an_error(self):
         with self.assertRaises(UserInputError) as error:
             validate_reference(self.title, " ", self.year)
-        self.assertEqual(str(error.exception), "Author can't be empty")
+        self.assertEqual(str(error.exception), "Kirjailia ei voi olla tyhjä")
 
     def test_none_author_raises_an_error(self):
         with self.assertRaises(UserInputError) as error:
             validate_reference(self.title, None, self.year)
-        self.assertEqual(str(error.exception), "Author can't be empty")
+        self.assertEqual(str(error.exception), "Kirjailia ei voi olla tyhjä")
 
     def test_too_long_title_raises_an_error(self):
         with self.assertRaises(UserInputError) as error:
             validate_reference(self.title, "A" * 101, self.year)
-        self.assertEqual(str(error.exception), "Maximum author length is 100 characters")
+        self.assertEqual(str(error.exception), "Kirjailian nimi ei voi olle enempää kun 100 merkkiä")
     
     def test_special_characters_in_author_dont_raises_an_error(self):
         self.assertEqual(validate_reference(self.title, "Teppå Test'sÅäÄöÖ", self.year), True)
@@ -59,22 +59,22 @@ class TestReferenceValidation(unittest.TestCase):
         self.assertEqual(validate_reference(self.title, "Teppå Test'sÅäÄöÖ", self.year), True)
         with self.assertRaises(UserInputError) as error:
             validate_reference(self.title, "Teppo Test!", self.year)
-        self.assertEqual(str(error.exception), "Author name contains invalid characters")
+        self.assertEqual(str(error.exception), "Kirjailian nimi sisältää virheellisiä merkkejä")
 
     def test_empty_year_raises_an_error(self):
         with self.assertRaises(UserInputError) as error:
             validate_reference(self.title, self.author, "")
-        self.assertEqual(str(error.exception), "Year must be a valid integer")
+        self.assertEqual(str(error.exception), "Vuosi tulee esittää numeroina")
 
     def test_only_a_space_in_year_raises_an_error(self):
         with self.assertRaises(UserInputError) as error:
             validate_reference(self.title, self.author, " ")
-        self.assertEqual(str(error.exception), "Year must be a valid integer")
+        self.assertEqual(str(error.exception), "Vuosi tulee esittää numeroina")
 
     def test_none_year_raises_an_error(self):
         with self.assertRaises(UserInputError) as error:
             validate_reference(self.title, self.author, None)
-        self.assertEqual(str(error.exception), "Year must be a valid integer")
+        self.assertEqual(str(error.exception), "Vuosi tulee esittää numeroina")
 
     def test_too_small_year_raises_an_error(self):
         with self.assertRaises(UserInputError) as error:
@@ -84,4 +84,4 @@ class TestReferenceValidation(unittest.TestCase):
     def test_too_big_year_raises_an_error(self):
         with self.assertRaises(UserInputError) as error:
             validate_reference(self.title, self.author, self.current_year + 1)
-        self.assertEqual(str(error.exception), f"Year must be between 1000 and {self.current_year}")
+        self.assertEqual(str(error.exception), f"Vuosi tulee olla 1000- {self.current_year} väliltä")

@@ -5,21 +5,21 @@ class UserInputError(Exception):
 
 def validate_reference(title, author, year):
     if not title or len(title.strip()) == 0:
-        raise UserInputError("Title can't be empty")
+        raise UserInputError("Teos ei voi olla tyhjä")
     if len(title) > 100:
-        raise UserInputError("Maximum title length is 100 characters")
+        raise UserInputError("Teoksen nimi ei voi olla enempä kun 100 merkkiä")
     if not author or len(author.strip()) == 0:
-        raise UserInputError("Author can't be empty")
+        raise UserInputError("Kirjailia ei voi olla tyhjä")
     if len(author) > 100:
-        raise UserInputError("Maximum author length is 100 characters")
+        raise UserInputError("Kirjailian nimi ei voi olle enempää kun 100 merkkiä")
     if not re.match(r"^[a-zA-ZåäöÅÄÖ\s'-]+$", author):
-        raise UserInputError("Author name contains invalid characters")
+        raise UserInputError("Kirjailian nimi sisältää virheellisiä merkkejä")
     current_year = datetime.now().year
     try:
         year_int = int(year)
     except:
-        raise UserInputError("Year must be a valid integer")
+        raise UserInputError("Vuosi tulee esittää numeroina")
     if year_int < 1000 or year_int > current_year:
-        raise UserInputError(f"Year must be between 1000 and {current_year}")
+        raise UserInputError(f"Vuosi tulee olla 1000- {current_year} väliltä")
     
     return True
