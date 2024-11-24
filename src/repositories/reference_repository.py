@@ -1,7 +1,7 @@
 from config import db
 from sqlalchemy import text
 
-from entities.reference import Reference
+from entities.reference import BookReference
 
 def get_references():
     sql = """
@@ -15,7 +15,7 @@ def get_references():
     """
     result = db.session.execute(text(sql))
     references = result.fetchall()
-    return [Reference(reference[0], reference[1], reference[2], reference[3]) for reference in references]
+    return [BookReference(reference[0], reference[1], reference[2], reference[3]) for reference in references]
 
 def create_reference(title, author, year):
     sql = """

@@ -1,4 +1,4 @@
-class Reference:
+class BookReference:
     def __init__(self, id, title, author, year):
         self.id = id 
         self.title = title
@@ -9,10 +9,10 @@ class Reference:
         return f"{self.title}, {self.author}, {self.year}"
     
     def bibtex(self):
-        key = "TESTI"
+        key = "testi"
         entry = f"""@book{{{key},
-    author = {{{self.author}}},
     title = {{{self.title}}},
+    author = {{{self.author}}},
     year = {{{self.year}}},
 }}"""
         return entry
