@@ -1,6 +1,6 @@
 from flask import redirect, render_template, request, jsonify, flash, session
 from db_helper import reset_db
-from repositories.reference_repository import get_references, create_book_reference, create_article_reference, create_inproceedings_reference#, delete_reference
+from repositories.reference_repository import get_references, create_book_reference, create_article_reference, create_inproceedings_reference, delete_book_reference, delete_article_reference, delete_inproceedings_reference
 from config import app, test_env
 from util import validate_reference
 
@@ -82,11 +82,17 @@ if test_env:
         return jsonify({ 'message': "db reset" })
 
 
-
 @app.route("/delete_reference", methods=["POST"])
 def delete_ref():
     reference_id = request.form.get("reference_id")
-    delete_reference(reference_id)
+    reference_type = request.form.get("reference_type")
+
+    if reference_type == "book":
+        delete_book_reference(reference_id)
+    elif reference_type == "article":
+        delete_article_reference(reference_id)
+    elif reference_type == "inproceedings":
+        delete_inproceedings_reference(reference_id)
 
     return redirect("/")
 

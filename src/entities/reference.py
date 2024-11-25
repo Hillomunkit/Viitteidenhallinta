@@ -1,6 +1,7 @@
 class BookReference:
     def __init__(self, id, title, author, year):
-        self.id = id 
+        self.id = id
+        self.type = "book"
         self.title = title
         self.author = author
         self.year = year
@@ -20,6 +21,7 @@ class BookReference:
 class ArticleReference:
     def __init__(self, id, title, author, year, journal, volume, pages):
         self.id = id 
+        self.type = "article"
         self.title = title
         self.author = author
         self.year = year
@@ -45,6 +47,7 @@ class ArticleReference:
 class InproceedingsReference:
     def __init__(self, id, title, author, year, booktitle):
         self.id = id 
+        self.type = "inproceedings"
         self.title = title
         self.author = author
         self.year = year
