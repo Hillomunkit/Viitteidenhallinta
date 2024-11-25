@@ -62,41 +62,41 @@ def setup_db():
     db.session.execute(sql)
     db.session.commit()
 
-    print(f"Creating table {table_name_articles}")
-    sql = text(
-      f"CREATE TABLE {table_name_articles} ("
-      "  id SERIAL PRIMARY KEY, "
-      "  title TEXT NOT NULL,"
-      "  author TEXT NOT NULL,"
-      "  year INTEGER"
-      "  journal TEXT NOT NULL"
-      "  volume INTEGER"
-      "  pages TEXT NOT NULL"
-      ")"
-    )
+  print(f"Creating table {table_name_articles}")
+  sql = text(
+    f"CREATE TABLE {table_name_articles} ("
+    "  id SERIAL PRIMARY KEY, "
+    "  title TEXT NOT NULL,"
+    "  author TEXT NOT NULL,"
+    "  year INTEGER"
+    "  journal TEXT NOT NULL"
+    "  volume INTEGER"
+    "  pages TEXT NOT NULL"
+    ")"
+  )
 
+  db.session.execute(sql)
+  db.session.commit()
+
+  if table_exists(table_name_inproceedings):
+    print(f"Table {table_name_inproceedings} exists, dropping")
+    sql = text(f"DROP TABLE {table_name_inproceedings}")
     db.session.execute(sql)
     db.session.commit()
-
-    if table_exists(table_name_inproceedings):
-      print(f"Table {table_name_inproceedings} exists, dropping")
-      sql = text(f"DROP TABLE {table_name_inproceedings}")
-      db.session.execute(sql)
-      db.session.commit()
     
-    print(f"Creating table {table_name_inproceedings}")
-    sql = text(
-      f"CREATE TABLE {table_name_inproceedings} ("
-      "  id SERIAL PRIMARY KEY, "
-      "  title TEXT NOT NULL,"
-      "  author TEXT NOT NULL,"
-      "  year INTEGER"
-      "  publisher TEXT NOT NULL"
-      ")"
-    )
+  print(f"Creating table {table_name_inproceedings}")
+  sql = text(
+    f"CREATE TABLE {table_name_inproceedings} ("
+    "  id SERIAL PRIMARY KEY, "
+    "  title TEXT NOT NULL,"
+    "  author TEXT NOT NULL,"
+    "  year INTEGER"
+    "  publisher TEXT NOT NULL"
+    ")"
+  )
 
-    db.session.execute(sql)
-    db.session.commit()
+db.session.execute(sql)
+db.session.commit()
 
 if __name__ == "__main__":
     with app.app_context():
