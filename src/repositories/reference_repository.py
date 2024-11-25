@@ -51,7 +51,7 @@ def get_inproceedings_references():
     return [InproceedingsReference(reference[0], reference[1], reference[2], reference[3], reference[4]) for reference in references]
 
 def get_references():
-    books = get_inproceedings_references()
+    books = get_book_references()
     articles = get_article_references()
     inproceedings = get_inproceedings_references()
     all_references = books + articles + inproceedings
@@ -72,7 +72,7 @@ def create_article_reference(title, author, year, journal, volume, pages):
     INSERT INTO 
         articles (title, author, year, journal, volume, pages)
     VALUES 
-        #(:title, :author, :year, :journal, :volume, :pages)
+        (:title, :author, :year, :journal, :volume, :pages)
     """
     db.session.execute(text(sql), { "title": title, "author": author, "year": year, "journal": journal, "volume": volume, "pages": pages })
     db.session.commit()
@@ -80,9 +80,9 @@ def create_article_reference(title, author, year, journal, volume, pages):
 def create_inproceedings_reference(title, author, year, booktitle):
     sql = """
     INSERT INTO 
-        articles (title, author, year, booktitle)
+        inproceedings (title, author, year, booktitle)
     VALUES 
-        #(:title, :author, :year, :booktitle)
+        (:title, :author, :year, :booktitle)
     """
     db.session.execute(text(sql), { "title": title, "author": author, "year": year, "booktitle": booktitle })
     db.session.commit()

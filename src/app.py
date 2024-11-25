@@ -1,6 +1,6 @@
 from flask import redirect, render_template, request, jsonify, flash, session
 from db_helper import reset_db
-from repositories.reference_repository import get_references, create_reference, delete_reference
+from repositories.reference_repository import get_references, create_book_reference, create_article_reference, create_inproceedings_reference#, delete_reference
 from config import app, test_env
 from util import validate_reference
 
@@ -9,6 +9,7 @@ def index():
     references = get_references()
     return render_template("index.html", references=references)
 
+# Saves the chosen reference type into a session object
 @app.route("/choose_reference", methods=["POST"])
 def choose():
     reference_type = request.form.get("reference_type")
@@ -17,6 +18,7 @@ def choose():
 
 @app.route("/new_reference")
 def new():
+    # If reference type hasn't been chosen, sets it as "book" by default
     if session.get("reference_type") is None:
         session["reference_type"] = "book"
 
@@ -24,17 +26,53 @@ def new():
 
 @app.route("/create_reference", methods=["POST"])
 def reference_creation():
-    title = request.form.get("title")
-    author = request.form.get("author")
-    year = request.form.get("year")
+    reference_type = request.form.get("reference_type")
 
-    try:
-        validate_reference(title, author, year)
-        create_reference(title, author, year)
-        return redirect("/")
-    except Exception as error:
-        flash(str(error))
-        return  redirect("/new_reference")
+    if reference_type == "book":
+        title = request.form.get("title")
+        author = request.form.get("author")
+        year = request.form.get("year")
+
+        try:
+            validate_reference(title, author, year)
+            create_book_reference(title, author, year)
+            return redirect("/")
+        except Exception as error:
+            flash(str(error))
+            return  redirect("/new_reference")
+        
+    elif reference_type == "article":
+        title = request.form.get("title")
+        author = request.form.get("author")
+        journal = request.form.get("journal")
+        year = request.form.get("year")
+        volume = request.form.get("volume")
+        pages = request.form.get("pages")
+
+        try:
+            # TODO: validate article reference
+            # validate_reference(title, author, year)
+            create_article_reference(title, author, year, journal, volume, pages)
+            return redirect("/")
+        except Exception as error:
+            flash(str(error))
+            return  redirect("/new_reference")
+
+    elif reference_type == "inproceedings":
+        title = request.form.get("title")
+        author = request.form.get("author")
+        year = request.form.get("year")
+        booktitle = request.form.get("booktitle")
+
+        try:
+            # TODO: validate inproceedings referece
+            #validate_reference(title, author, year)
+            create_inproceedings_reference(title, author, year, booktitle)
+            return redirect("/")
+        except Exception as error:
+            flash(str(error))
+            return  redirect("/new_reference")
+
 
 # testausta varten oleva reitti
 if test_env:

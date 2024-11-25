@@ -68,9 +68,9 @@ def setup_db():
     "  id SERIAL PRIMARY KEY, "
     "  title TEXT NOT NULL,"
     "  author TEXT NOT NULL,"
-    "  year INTEGER"
-    "  journal TEXT NOT NULL"
-    "  volume INTEGER"
+    "  year INTEGER,"
+    "  journal TEXT NOT NULL,"
+    "  volume INTEGER,"
     "  pages TEXT NOT NULL"
     ")"
   )
@@ -90,13 +90,13 @@ def setup_db():
     "  id SERIAL PRIMARY KEY, "
     "  title TEXT NOT NULL,"
     "  author TEXT NOT NULL,"
-    "  year INTEGER"
-    "  publisher TEXT NOT NULL"
+    "  year INTEGER,"
+    "  booktitle TEXT NOT NULL"
     ")"
   )
 
-db.session.execute(sql)
-db.session.commit()
+  db.session.execute(sql)
+  db.session.commit()
 
 if __name__ == "__main__":
     with app.app_context():
