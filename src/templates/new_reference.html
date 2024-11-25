@@ -55,7 +55,7 @@ Lisää viite
 
 {% elif reference_type == "article" %}
 
-<h3>Lisää artikkeliviite</h3>
+<h2>Lisää artikkeliviite</h2>
 
 <form action="/create_reference" method="post">
   {% with messages = get_flashed_messages() %}
@@ -94,7 +94,7 @@ Lisää viite
 
 {% elif reference_type == "inproceedings" %}
 
-<h3>Lisää inproceedings-viite</h3>
+<h2>Lisää inproceedings-viite</h2>
 
 <form action="/create_reference" method="post">
   {% with messages = get_flashed_messages() %}
