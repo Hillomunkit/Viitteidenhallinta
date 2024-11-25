@@ -1,6 +1,7 @@
 from flask import redirect, render_template, request, jsonify, flash, session
 from db_helper import reset_db
-from repositories.reference_repository import get_references, create_book_reference, create_article_reference, create_inproceedings_reference, delete_book_reference, delete_article_reference, delete_inproceedings_reference
+from repositories.reference_repository import get_references, create_book_reference, create_article_reference, create_inproceedings_reference, \
+    delete_book_reference, delete_article_reference, delete_inproceedings_reference
 from config import app, test_env
 from util import validate_reference
 
