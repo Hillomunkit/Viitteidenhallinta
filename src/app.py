@@ -10,6 +10,12 @@ def index():
     references = get_references()
     return render_template("index.html", references=references)
 
+@app.route("/bibtex")
+def display_bibtex():
+    references = get_references()
+    bibtex_content = "\n\n".join(ref.bibtex() for ref in references)
+    return render_template("bibtex.html", bibtex_content=bibtex_content)
+
 # Saves the chosen reference type into a session object
 @app.route("/choose_reference", methods=["POST"])
 def choose():
