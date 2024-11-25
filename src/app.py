@@ -1,4 +1,4 @@
-from flask import redirect, render_template, request, jsonify, flash
+from flask import redirect, render_template, request, jsonify, flash, session
 from db_helper import reset_db
 from repositories.reference_repository import get_references, create_reference, delete_reference
 from config import app, test_env
@@ -9,9 +9,18 @@ def index():
     references = get_references()
     return render_template("index.html", references=references)
 
+@app.route("/choose_reference", methods=["POST"])
+def choose():
+    reference_type = request.form.get("reference_type")
+    session["reference_type"] = reference_type
+    return redirect("/new_reference")
+
 @app.route("/new_reference")
 def new():
-    return render_template("new_reference.html")
+    if session.get("reference_type") is None:
+        session["reference_type"] = "book"
+
+    return render_template("new_reference.html", reference_type=session["reference_type"])
 
 @app.route("/create_reference", methods=["POST"])
 def reference_creation():

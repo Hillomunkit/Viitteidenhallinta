@@ -6,7 +6,56 @@ Lisää viite
 
 {% block body %}
 
-<h2>Lisää kirjaviite</h2>
+<h2>Valitse viitetyyppi</h2>
+
+<form action="/choose_reference" method="post">
+  <input type="hidden" name="reference_type" value="book">
+  <button type="submit">Kirja</button>
+</form>
+
+<form action="/choose_reference" method="post">
+  <input type="hidden" name="reference_type" value="article">
+  <button type="submit">Artikkeli</button>
+</form>
+
+<form action="/choose_reference" method="post">
+  <input type="hidden" name="reference_type" value="inproceedings">
+  <button type="submit">Inproceedings</button>
+</form>
+
+{% if reference_type == "book" %}
+
+  <h2>Lisää kirjaviite</h2>
+
+  <form action="/create_reference" method="post">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <label for="content">Teos:</label>
+    <input type="text" name="title" id="title" minlength="1" maxlength="100" oninvalid="alert('Teoksen nimi tulee olla 1-100 merkkiä');" required>
+    <br>
+    <label for="content">Kirjoittanut:</label>
+    <input type="text" name="author" id="author" minlength="1" maxlength="100" oninvalid="alert('Kirjailijan nimi tulee olla 1-100 merkkiä');" required>
+    <br>
+    <label for="content">Painosvuosi:</label>
+    <input type="text" name="year" id="year" minlength="4" maxlength="4" oninvalid="alert('Vuosiluku tulee kirjoittaa muodossa xxxx');" required>
+    <input type="hidden" name="reference_type" value="{{ reference_type }}"/>
+    <br>
+  
+    <button type="submit">
+      Lisää
+    </button>
+  </form>
+
+{% elif reference_type == "article" %}
+
+<h3>Lisää artikkeliviite</h3>
 
 <form action="/create_reference" method="post">
   {% with messages = get_flashed_messages() %}
@@ -18,20 +67,66 @@ Lisää viite
       </ul>
     {% endif %}
   {% endwith %}
-  <label for="content">Teos:</label>
-  <input type="text" name="title" id="title" minlength="1" maxlength="100" oninvalid="alert('Teoksen nimi tulee olla vähintään 1-100 merkkiä');" required>
+  <label for="content">Artikkeli:</label>
+  <input type="text" name="title" id="title" minlength="1" maxlength="100" oninvalid="alert('Teoksen nimi tulee olla 1-100 merkkiä');" required>
   <br>
   <label for="content">Kirjoittanut:</label>
-  <input type="text" name="author" id="author" minlength="1" maxlength="100" oninvalid="alert('Kirjailian nimi tulee olla vähintään 1-100 merkkiä');" required>
+  <input type="text" name="author" id="author" minlength="1" maxlength="100" oninvalid="alert('Kirjailijan nimi tulee olla 1-100 merkkiä');" required>
+  <br>
+  <label for="content">Lehti:</label>
+  <input type="text" name="journal" id="journal" minlength="1" maxlength="100" oninvalid="alert('Lehden nimi tulee olla 1-100 merkkiä');" required>
   <br>
   <label for="content">Painosvuosi:</label>
-  <input type="text" name="year" id="year" minlength="4" maxlength="" oninvalid="alert('Vuosiluku tulee kirjoittaa muodossa xxxx');" required>
+  <input type="text" name="year" id="year" minlength="4" maxlength="4" oninvalid="alert('Vuosiluku tulee kirjoittaa muodossa xxxx');" required>
+  <br>
+  <label for="content">Volyymi:</label>
+  <input type="text" name="volume" id="volume" minlength="1" maxlength="10" oninvalid="alert('Volyymin tulee olla 1-10 merkkiä');" required>
+  <br>
+  <label for="content">Sivut:</label>
+  <input type="text" name="pages" id="pages" minlength="4" maxlength="10" oninvalid="alert('Sivujen tulee olla muodossa x--x');" required>
+  <input type="hidden" name="reference_type" value="{{ reference_type }}"/>
   <br>
 
   <button type="submit">
     Lisää
   </button>
 </form>
+
+{% elif reference_type == "inproceedings" %}
+
+<h3>Lisää inproceedings-viite</h3>
+
+<form action="/create_reference" method="post">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  <label for="content">Otsikko:</label>
+  <input type="text" name="title" id="title" minlength="1" maxlength="100" oninvalid="alert('Otsikon nimi tulee olla 1-100 merkkiä');" required>
+  <br>
+  <label for="content">Kirjoittanut:</label>
+  <input type="text" name="author" id="author" minlength="1" maxlength="100" oninvalid="alert('Kirjailijan nimi tulee olla vähintään 1-100 merkkiä');" required>
+  <br>
+  <label for="content">Painosvuosi:</label>
+  <input type="text" name="year" id="year" minlength="4" maxlength="4" oninvalid="alert('Vuosiluku tulee kirjoittaa muodossa xxxx');" required>
+  <br>
+  <label for="content">Kirjaotsikko:</label>
+  <input type="text" name="booktitile" id="booktitle" minlength="1" maxlength="100" oninvalid="alert('Kirjaotsikon tulee olla 1-100 merkkiä');" required>
+  <input type="hidden" name="reference_type" value="{{ reference_type }}"/>
+  <br>
+
+  <button type="submit">
+    Lisää
+  </button>
+</form>
+
+{% endif %}
+
 <div>
   <a href="/">Takaisin</a>
 </div>
