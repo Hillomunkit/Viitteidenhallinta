@@ -24,7 +24,7 @@ A Article Reference Can Be Deleted
     Set Journal  test-journal
     Set Year  2021
     Set Volume  22
-    Set Pages  8--9
+    Set Pages  8-9
     Click Button  Lisää
     Page Should Contain  Artikkeli1, author-testi, 2021
     Click Button  Poista
