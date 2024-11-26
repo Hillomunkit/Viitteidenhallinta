@@ -41,7 +41,7 @@ def reference_creation():
         year = request.form.get("year")
 
         try:
-            validate_reference(title, author, year)
+            validate_reference(title, author, year, reference_type)
             create_book_reference(title, author, year)
             return redirect("/")
         except Exception as error:
@@ -57,8 +57,7 @@ def reference_creation():
         pages = request.form.get("pages")
 
         try:
-            # TODO: validate article reference
-            # validate_reference(title, author, year)
+            validate_reference(title, author, year, reference_type, journal=journal, volume=volume, pages=pages)
             create_article_reference(title, author, year, journal, volume, pages)
             return redirect("/")
         except Exception as error:
@@ -72,8 +71,7 @@ def reference_creation():
         booktitle = request.form.get("booktitle")
 
         try:
-            # TODO: validate inproceedings referece
-            #validate_reference(title, author, year)
+            validate_reference(title, author, year, reference_type, booktitle=booktitle)
             create_inproceedings_reference(title, author, year, booktitle)
             return redirect("/")
         except Exception as error:
