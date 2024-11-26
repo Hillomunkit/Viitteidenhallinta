@@ -34,7 +34,7 @@ After adding two references, there are two
     Page Should Contain  test1, test-author, 2001
     Page Should Contain  test2, author-test, 2002
 
-A article reference can be added and seen on start page
+A Article Reference Can Be Added And Seen On Start Page
     Go To  ${HOME_URL}
     Click Link  Lisää uusi viite
     Click Button  Artikkeli
@@ -47,7 +47,7 @@ A article reference can be added and seen on start page
     Click Button  Lisää
     Page Should Contain  Artikkeli1, author-testi, 2021
 
-A Inproceedings reference can be added and seen on start page
+A Inproceedings Reference Can Be Added And Seen On Start Page
     Go To  ${HOME_URL}
     Click Link  Lisää uusi viite
     Click Button  Inproceedings
