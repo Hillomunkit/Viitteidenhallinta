@@ -9,7 +9,8 @@ disable=
     too-few-public-methods,
     no-self-use,
     broad-exception-caught,
-    inconsistent-return-statements
+    inconsistent-return-statements,
+    redefined-builtin
 
 [FORMAT]
 # Maximum number of characters on a single line

@@ -1,5 +1,5 @@
-from config import db
 from sqlalchemy import text
+from config import db
 
 from entities.reference import BookReference, ArticleReference, InproceedingsReference
 
@@ -16,7 +16,8 @@ def get_book_references():
     """
     result = db.session.execute(text(sql))
     references = result.fetchall()
-    return [BookReference(reference[0], reference[1], reference[2], reference[3]) for reference in references]
+    return [BookReference(reference[0], reference[1],
+                          reference[2], reference[3]) for reference in references]
 
 def get_article_references():
     sql = """
@@ -33,7 +34,8 @@ def get_article_references():
     """
     result = db.session.execute(text(sql))
     references = result.fetchall()
-    return [ArticleReference(reference[0], reference[1], reference[2], reference[3], reference[4], reference[5], reference[6]) for reference in references]
+    return [ArticleReference(reference[0], reference[1], reference[2], reference[3],
+                             reference[4], reference[5], reference[6]) for reference in references]
 
 def get_inproceedings_references():
     sql = """
@@ -48,7 +50,8 @@ def get_inproceedings_references():
     """
     result = db.session.execute(text(sql))
     references = result.fetchall()
-    return [InproceedingsReference(reference[0], reference[1], reference[2], reference[3], reference[4]) for reference in references]
+    return [InproceedingsReference(reference[0], reference[1], reference[2],
+                                   reference[3], reference[4]) for reference in references]
 
 def get_references():
     books = get_book_references()
@@ -74,7 +77,8 @@ def create_article_reference(title, author, year, journal, volume, pages):
     VALUES 
         (:title, :author, :year, :journal, :volume, :pages)
     """
-    db.session.execute(text(sql), { "title": title, "author": author, "year": year, "journal": journal, "volume": volume, "pages": pages })
+    db.session.execute(text(sql), { "title": title, "author": author, "year": year,
+                                   "journal": journal, "volume": volume, "pages": pages })
     db.session.commit()
 
 def create_inproceedings_reference(title, author, year, booktitle):
@@ -84,7 +88,8 @@ def create_inproceedings_reference(title, author, year, booktitle):
     VALUES 
         (:title, :author, :year, :booktitle)
     """
-    db.session.execute(text(sql), { "title": title, "author": author, "year": year, "booktitle": booktitle })
+    db.session.execute(text(sql), { "title": title, "author": author,
+                                   "year": year, "booktitle": booktitle })
     db.session.commit()
 
 def delete_book_reference(reference_id):

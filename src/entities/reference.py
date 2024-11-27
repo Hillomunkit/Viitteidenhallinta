@@ -8,7 +8,7 @@ class BookReference:
 
     def __str__(self):
         return f"{self.title}, {self.author}, {self.year}"
-    
+
     def bibtex(self):
         year = str(self.year)
         key = f"{self.author.split()[-1]}{year[2:]}"
@@ -18,10 +18,10 @@ class BookReference:
     year = {{{self.year}}},
 }}"""
         return entry
-    
+
 class ArticleReference:
     def __init__(self, id, title, author, year, journal, volume, pages):
-        self.id = id 
+        self.id = id
         self.type = "article"
         self.title = title
         self.author = author
@@ -32,7 +32,7 @@ class ArticleReference:
 
     def __str__(self):
         return f"{self.title}, {self.author}, {self.year}"
-    
+
     def bibtex(self):
         year = str(self.year)
         key = f"{self.author.split()[-1]}{year[2:]}"
@@ -45,10 +45,10 @@ class ArticleReference:
     pages = {{{self.pages}}},
 }}"""
         return entry
-    
+
 class InproceedingsReference:
     def __init__(self, id, title, author, year, booktitle):
-        self.id = id 
+        self.id = id
         self.type = "inproceedings"
         self.title = title
         self.author = author
@@ -57,7 +57,7 @@ class InproceedingsReference:
 
     def __str__(self):
         return f"{self.title}, {self.author}, {self.year}"
-    
+
     def bibtex(self):
         year = str(self.year)
         key = f"{self.author.split()[-1]}{year[2:]}"
