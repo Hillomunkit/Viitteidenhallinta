@@ -1,5 +1,5 @@
-from config import db, app
 from sqlalchemy import text
+from config import db, app
 
 table_name_books = "books"
 table_name_articles = "articles"
@@ -83,7 +83,7 @@ def setup_db():
         sql = text(f"DROP TABLE {table_name_inproceedings}")
         db.session.execute(sql)
         db.session.commit()
-      
+
     print(f"Creating table {table_name_inproceedings}")
     sql = text(
         f"CREATE TABLE {table_name_inproceedings} ("
@@ -100,4 +100,4 @@ def setup_db():
 
 if __name__ == "__main__":
     with app.app_context():
-      setup_db()
+        setup_db()
