@@ -1,6 +1,7 @@
 from flask import redirect, render_template, request, jsonify, flash, session
 from db_helper import reset_db
-from repositories.reference_repository import get_references, create_book_reference, create_article_reference, create_inproceedings_reference, \
+from repositories.reference_repository import get_references, create_book_reference, \
+    create_article_reference, create_inproceedings_reference, \
     delete_book_reference, delete_article_reference, delete_inproceedings_reference
 from config import app, test_env
 from util import validate_reference
@@ -47,7 +48,7 @@ def reference_creation():
         except Exception as error:
             flash(str(error))
             return  redirect("/new_reference")
-        
+
     elif reference_type == "article":
         title = request.form.get("title")
         author = request.form.get("author")
@@ -57,7 +58,8 @@ def reference_creation():
         pages = request.form.get("pages")
 
         try:
-            validate_reference(title, author, year, reference_type, journal=journal, volume=volume, pages=pages)
+            validate_reference(title, author, year, reference_type,
+                               journal=journal, volume=volume, pages=pages)
             create_article_reference(title, author, year, journal, volume, pages)
             return redirect("/")
         except Exception as error:
@@ -77,7 +79,6 @@ def reference_creation():
         except Exception as error:
             flash(str(error))
             return  redirect("/new_reference")
-
 
 # testausta varten oleva reitti
 if test_env:
@@ -100,5 +101,3 @@ def delete_ref():
         delete_inproceedings_reference(reference_id)
 
     return redirect("/")
-
-

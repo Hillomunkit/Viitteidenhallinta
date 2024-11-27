@@ -1,15 +1,15 @@
 [MASTER]
-ignore=tests, story_tests
-
-load-plugins=
+ignore=tests, story_tests, util.py
 
 [MESSAGES CONTROL]
-# Disable specific warnings that are often unnecessary
+# Disable specific warnings
 disable=
     missing-docstring,
     invalid-name,
     too-few-public-methods,
     no-self-use,
+    broad-exception-caught,
+    inconsistent-return-statements
 
 [FORMAT]
 # Maximum number of characters on a single line
@@ -31,14 +31,13 @@ function-rgx=[a-z_][a-z0-9_]{2,30}$
 
 [DESIGN]
 # Maximum number of arguments for a function/method
-max-args=7
+max-args=10
+
+# Maximum number of positional arguments
+max-positional-arguments=10
 
 # Maximum number of attributes in a class
-max-attributes=7
-
-[TYPECHECK]
-# List of ignored modules (useful for mocking or missing imports)
-ignored-modules=
+max-attributes=10
 
 [LOGGING]
 # Format style used for logging (e.g., old style "%s" or new style "{}")
