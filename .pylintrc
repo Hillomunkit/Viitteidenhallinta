@@ -1,0 +1,49 @@
+[MASTER]
+ignore=tests, story_tests
+
+load-plugins=
+
+[MESSAGES CONTROL]
+# Disable specific warnings that are often unnecessary
+disable=
+    missing-docstring,
+    invalid-name,
+    too-few-public-methods,
+    no-self-use,
+
+[FORMAT]
+# Maximum number of characters on a single line
+max-line-length=100
+
+# Number of spaces for indentation
+indent-string='    '
+indent-after-paren=4
+
+[BASIC]
+# Variable naming conventions
+variable-rgx=[a-z_][a-z0-9_]{2,30}$
+
+# Argument naming conventions
+argument-rgx=[a-z_][a-z0-9_]{2,30}$
+
+# Function naming conventions
+function-rgx=[a-z_][a-z0-9_]{2,30}$
+
+[DESIGN]
+# Maximum number of arguments for a function/method
+max-args=7
+
+# Maximum number of attributes in a class
+max-attributes=7
+
+[TYPECHECK]
+# List of ignored modules (useful for mocking or missing imports)
+ignored-modules=
+
+[LOGGING]
+# Format style used for logging (e.g., old style "%s" or new style "{}")
+logging-format-style=new
+
+[REPORTS]
+# Disable pylint's overly verbose report output
+reports=no
