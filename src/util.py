@@ -43,7 +43,7 @@ def validate_reference(title, author, year, reference_type, journal=None, volume
             raise UserInputError("\"Sivut\" on virheellisessä formaatissa")
     if booktitle:
         if len(booktitle.strip()) == 0:
-          raise UserInputError(f"\"Kirjaotsikko\" ei voi olla pelkkiä välilyöntejä")
+            raise UserInputError(f"\"Kirjaotsikko\" ei voi olla pelkkiä välilyöntejä")
         if len(booktitle) > 100:
           raise UserInputError(f"\"Kirjaotsikko\" maksimipituus on 100 merkkiä")
     
