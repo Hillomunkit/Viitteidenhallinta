@@ -10,7 +10,8 @@ class BookReference:
         return f"{self.title}, {self.author}, {self.year}"
     
     def bibtex(self):
-        key = "testi"
+        year = str(self.year)
+        key = f"{self.author.split()[-1]}{year[2:]}"
         entry = f"""@book{{{key},
     title = {{{self.title}}},
     author = {{{self.author}}},
@@ -33,7 +34,8 @@ class ArticleReference:
         return f"{self.title}, {self.author}, {self.year}"
     
     def bibtex(self):
-        key = "testi"
+        year = str(self.year)
+        key = f"{self.author.split()[-1]}{year[2:]}"
         entry = f"""@article{{{key},
     title = {{{self.title}}},
     author = {{{self.author}}},
@@ -57,7 +59,8 @@ class InproceedingsReference:
         return f"{self.title}, {self.author}, {self.year}"
     
     def bibtex(self):
-        key = "testi"
+        year = str(self.year)
+        key = f"{self.author.split()[-1]}{year[2:]}"
         entry = f"""@inproceedings{{{key},
     title = {{{self.title}}},
     author = {{{self.author}}},
