@@ -41,9 +41,8 @@ max-positional-arguments=10
 max-attributes=10
 
 [LOGGING]
-# Format style used for logging (e.g., old style "%s" or new style "{}")
+# Format style used for logging
 logging-format-style=new
 
 [REPORTS]
-# Disable pylint's overly verbose report output
 reports=no
