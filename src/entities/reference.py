@@ -1,10 +1,7 @@
 class BookReference:
-    def __init__(self, id, title, author, year):
-        self.id = id
+    def __init__(self, **kwargs):
+        self.__dict__.update(kwargs)
         self.type = "book"
-        self.title = title
-        self.author = author
-        self.year = year
 
     def __str__(self):
         return f"{self.title}, {self.author}, {self.year}"
@@ -20,15 +17,9 @@ class BookReference:
         return entry
 
 class ArticleReference:
-    def __init__(self, id, title, author, year, journal, volume, pages):
-        self.id = id
+    def __init__(self, **kwargs):
+        self.__dict__.update(kwargs)
         self.type = "article"
-        self.title = title
-        self.author = author
-        self.year = year
-        self.journal = journal
-        self.volume = volume
-        self.pages = pages
 
     def __str__(self):
         return f"{self.title}, {self.author}, {self.year}"
@@ -47,13 +38,9 @@ class ArticleReference:
         return entry
 
 class InproceedingsReference:
-    def __init__(self, id, title, author, year, booktitle):
-        self.id = id
+    def __init__(self, **kwargs):
+        self.__dict__.update(kwargs)
         self.type = "inproceedings"
-        self.title = title
-        self.author = author
-        self.year = year
-        self.booktitle = booktitle
 
     def __str__(self):
         return f"{self.title}, {self.author}, {self.year}"

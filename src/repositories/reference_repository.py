@@ -15,9 +15,8 @@ def get_book_references():
         books
     """
     result = db.session.execute(text(sql))
-    references = result.fetchall()
-    return [BookReference(reference[0], reference[1],
-                          reference[2], reference[3]) for reference in references]
+    references = result.mappings().all()
+    return [BookReference(**reference) for reference in references]
 
 def get_article_references():
     sql = """
@@ -33,9 +32,8 @@ def get_article_references():
         articles
     """
     result = db.session.execute(text(sql))
-    references = result.fetchall()
-    return [ArticleReference(reference[0], reference[1], reference[2], reference[3],
-                             reference[4], reference[5], reference[6]) for reference in references]
+    references = result.mappings().all()
+    return [ArticleReference(**reference) for reference in references]
 
 def get_inproceedings_references():
     sql = """
@@ -49,9 +47,8 @@ def get_inproceedings_references():
         inproceedings
     """
     result = db.session.execute(text(sql))
-    references = result.fetchall()
-    return [InproceedingsReference(reference[0], reference[1], reference[2],
-                                   reference[3], reference[4]) for reference in references]
+    references = result.mappings().all()
+    return [InproceedingsReference(**reference) for reference in references]
 
 def get_references():
     books = get_book_references()
