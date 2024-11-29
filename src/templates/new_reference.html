@@ -38,13 +38,13 @@ Lisää viite
       {% endif %}
     {% endwith %}
     <label for="content">Teos:</label>
-    <input type="text" name="title" id="title" minlength="1" maxlength="100" oninvalid="alert('Teoksen nimi tulee olla 1-100 merkkiä');" required>
+    <input type="text" name="title" id="title" >
     <br>
     <label for="content">Kirjoittanut:</label>
-    <input type="text" name="author" id="author" minlength="1" maxlength="100" oninvalid="alert('Kirjailijan nimi tulee olla 1-100 merkkiä');" required>
+    <input type="text" name="author" id="author" >
     <br>
     <label for="content">Painosvuosi:</label>
-    <input type="text" name="year" id="year" minlength="4" maxlength="4" oninvalid="alert('Vuosiluku tulee kirjoittaa muodossa xxxx');" required>
+    <input type="text" name="year" id="year" >
     <input type="hidden" name="reference_type" value="{{ reference_type }}"/>
     <br>
   
@@ -68,22 +68,22 @@ Lisää viite
     {% endif %}
   {% endwith %}
   <label for="content">Artikkeli:</label>
-  <input type="text" name="title" id="title" minlength="1" maxlength="100" oninvalid="alert('Teoksen nimi tulee olla 1-100 merkkiä');" required>
+  <input type="text" name="title" id="title" >
   <br>
   <label for="content">Kirjoittanut:</label>
-  <input type="text" name="author" id="author" minlength="1" maxlength="100" oninvalid="alert('Kirjailijan nimi tulee olla 1-100 merkkiä');" required>
+  <input type="text" name="author" id="author" >
   <br>
   <label for="content">Lehti:</label>
-  <input type="text" name="journal" id="journal" minlength="1" maxlength="100" oninvalid="alert('Lehden nimi tulee olla 1-100 merkkiä');" required>
+  <input type="text" name="journal" id="journal" >
   <br>
   <label for="content">Painosvuosi:</label>
-  <input type="text" name="year" id="year" minlength="4" maxlength="4" oninvalid="alert('Vuosiluku tulee kirjoittaa muodossa xxxx');" required>
+  <input type="text" name="year" id="year" >
   <br>
   <label for="content">Volyymi:</label>
-  <input type="text" name="volume" id="volume" minlength="1" maxlength="10" oninvalid="alert('Volyymin tulee olla 1-10 merkkiä');" required>
+  <input type="text" name="volume" id="volume" >
   <br>
   <label for="content">Sivut:</label>
-  <input type="text" name="pages" id="pages" minlength="1" maxlength="10" oninvalid="alert('Sivujen tulee olla muodossa x-x');" required>
+  <input type="text" name="pages" id="pages" >
   <input type="hidden" name="reference_type" value="{{ reference_type }}"/>
   <br>
 
@@ -107,16 +107,16 @@ Lisää viite
     {% endif %}
   {% endwith %}
   <label for="content">Otsikko:</label>
-  <input type="text" name="title" id="title" minlength="1" maxlength="100" oninvalid="alert('Otsikon nimi tulee olla 1-100 merkkiä');" required>
+  <input type="text" name="title" id="title" >
   <br>
   <label for="content">Kirjoittanut:</label>
-  <input type="text" name="author" id="author" minlength="1" maxlength="100" oninvalid="alert('Kirjailijan nimi tulee olla vähintään 1-100 merkkiä');" required>
+  <input type="text" name="author" id="author" >
   <br>
   <label for="content">Painosvuosi:</label>
-  <input type="text" name="year" id="year" minlength="4" maxlength="4" oninvalid="alert('Vuosiluku tulee kirjoittaa muodossa xxxx');" required>
+  <input type="text" name="year" id="year" >
   <br>
   <label for="content">Kirjaotsikko:</label>
-  <input type="text" name="booktitle" id="booktitle" minlength="1" maxlength="100" oninvalid="alert('Kirjaotsikon tulee olla 1-100 merkkiä');" required>
+  <input type="text" name="booktitle" id="booktitle" >
   <input type="hidden" name="reference_type" value="{{ reference_type }}"/>
   <br>
 
