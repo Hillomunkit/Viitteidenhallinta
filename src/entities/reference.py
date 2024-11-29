@@ -2,6 +2,7 @@ class BookReference:
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
         self.type = "book"
+    # pylint: disable=no-member
 
     def __str__(self):
         return f"{self.title}, {self.author}, {self.year}"
@@ -20,6 +21,7 @@ class ArticleReference:
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
         self.type = "article"
+    # pylint: disable=no-member
 
     def __str__(self):
         return f"{self.title}, {self.author}, {self.year}"
@@ -41,6 +43,7 @@ class InproceedingsReference:
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
         self.type = "inproceedings"
+    # pylint: disable=no-member
 
     def __str__(self):
         return f"{self.title}, {self.author}, {self.year}"
