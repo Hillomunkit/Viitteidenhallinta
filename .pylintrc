@@ -36,10 +36,10 @@ function-rgx=[a-z_][a-z0-9_]{2,30}$
 max-args=15
 
 # Maximum number of positional arguments
-max-positional-arguments=10
+max-positional-arguments=20
 
 # Maximum number of attributes in a class
-max-attributes=10
+max-attributes=15
 
 # Maximum number of local variables in a function/method
 max-locals=20
