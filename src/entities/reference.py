@@ -1,3 +1,5 @@
+import re
+
 # pylint: disable=no-member
 class ReferenceBase:
     def __init__(self, **kwargs):
@@ -7,9 +9,19 @@ class ReferenceBase:
     def __str__(self):
         return ", ".join(str(value) for value in self.fields.values() if value != "")
 
+    def __generate_citekey(self):
+        author_parts = re.split(r'[,\s]+', self.author)
+        key_author = author_parts[0].lower()
+        key_year = str(self.year)
+        words = re.split(r'\W+', self.title)
+        ignore = {"a", "an", "the", ""}
+        filtered_words = [word.lower() for word in words if word.lower() not in ignore]
+        key_title = filtered_words[0] if len(filtered_words) > 0 else ""
+
+        return f"{key_author}{key_year}{key_title}"
+
     def bibtex(self):
-        year = str(self.year)
-        key = f"{self.author.split()[-1]}{year[2:]}"
+        citekey = self.__generate_citekey()
 
         bibtex_fields = "\n".join(
             f"  {field_key} = {{{field_value}}},"
@@ -17,7 +29,7 @@ class ReferenceBase:
         )
 
         entry = (
-            f"@{self.type}{{{key},\n"
+            f"@{self.type}{{{citekey},\n"
             f"{bibtex_fields}\n"
             f"}}"
         )
