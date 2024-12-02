@@ -66,14 +66,33 @@ def get_references():
     all_references = books + articles + inproceedings
     return all_references
 
-def create_book_reference(title, author, publisher, year, volume=None, number=None, series=None, address=None, edition=None, month=None, note=None, annote=None):
+def create_book_reference(
+        title, author, publisher, year, volume=None, number=None,
+        series=None, address=None, edition=None, month=None, note=None, annote=None
+        ):
     sql = """
     INSERT INTO 
         books (title, author, publisher, year, volume, number, series, address, edition, month, note, annote)
     VALUES 
         (:title, :author, :publisher, :year, :volume, :number, :series, :address, :edition, :month, :note, :annote)
     """
-    db.session.execute(text(sql), { "title": title, "author": author, "publisher": publisher, "year": year, "volume": volume, "number": number, "series": series, "address": address, "edition": edition, "month": month, "note": note, "annote": annote })
+    db.session.execute(
+        text(sql),
+        {
+            "title": title,
+            "author": author,
+            "publisher": publisher,
+            "year": year,
+            "volume": volume,
+            "number": number,
+            "series": series,
+            "address": address,
+            "edition": edition,
+            "month": month,
+            "note": note,
+            "annote": annote
+        }
+    )
     db.session.commit()
 
 def create_article_reference(title, author, year, journal, volume, pages):

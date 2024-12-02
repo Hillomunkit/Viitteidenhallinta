@@ -52,7 +52,15 @@ def reference_creation():
 
         try:
             validate_reference(title, author, year, reference_type)
-            create_book_reference(title, author, publisher, year, volume, number, series, address, edition, month, note, annote)
+            create_book_reference(
+                title, author,
+                publisher, year,
+                volume, number,
+                series, address,
+                edition, month,
+                note,
+                annote
+            )
             return redirect("/")
         except Exception as error:
             flash(str(error))
