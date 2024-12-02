@@ -1,103 +1,85 @@
-class BookReference:
+# pylint: disable=no-member
+class ReferenceBase:
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
+        self.fields = {}
+
+    def __str__(self):
+        return ", ".join(str(value) for value in self.fields.values() if value != "")
+
+    def bibtex(self):
+        year = str(self.year)
+        key = f"{self.author.split()[-1]}{year[2:]}"
+
+        bibtex_fields = "\n".join(
+            f"  {field_key} = {{{field_value}}},"
+            for field_key, field_value in self.fields.items() if field_value != ""
+        )
+
+        entry = (
+            f"@{self.type}{{{key},\n"
+            f"{bibtex_fields}\n"
+            f"}}"
+        )
+        return entry
+
+
+class BookReference(ReferenceBase):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         self.type = "book"
-    # pylint: disable=no-member
+        self.fields = {
+            "title": self.title,
+            "author": self.author,
+            "publisher": self.publisher,
+            "year": self.year,
+            "volume": self.volume,
+            "number": self.number,
+            "series": self.series,
+            "address": self.address,
+            "edition": self.edition,
+            "month": self.month,
+            "note": self.note,
+            "annote": self.annote,
+        }
 
-    def __str__(self):
-        return (f"{self.title}, {self.author},"
-                f"{self.publisher}, {self.year},"
-                f"{self.volume}, {self.number},"
-                f"{self.series}, {self.address},"
-                f"{self.edition}, {self.month},"
-                f"{self.note}, {self.annote}"
-                )
 
-    def bibtex(self):
-        year = str(self.year)
-        key = f"{self.author.split()[-1]}{year[2:]}"
-        entry = f"""@book{{{key},
-    title = {{{self.title}}},
-    author = {{{self.author}}},
-    author = {{{self.publisher}}},
-    year = {{{self.year}}},
-    volume = {{{self.volume}}},
-    number = {{{self.number}}},
-    series = {{{self.series}}},
-    address = {{{self.address}}},
-    edition = {{{self.edition}}},
-    month = {{{self.month}}},
-    note = {{{self.note}}},
-    annote = {{{self.annote}}}
-}}"""
-        return entry
-
-class ArticleReference:
+class ArticleReference(ReferenceBase):
     def __init__(self, **kwargs):
-        self.__dict__.update(kwargs)
+        super().__init__(**kwargs)
         self.type = "article"
-    # pylint: disable=no-member
+        self.fields = {
+            "title": self.title,
+            "author": self.author,
+            "journal": self.journal,
+            "year": self.year,
+            "volume": self.volume,
+            "number": self.number,
+            "pages": self.pages,
+            "month": self.month,
+            "note": self.note,
+            "annote": self.annote,
+        }
 
-    def __str__(self):
-        return (f"{self.title}, {self.author},"
-                f"{self.year}, {self.volume},"
-                f"{self.number}, {self.pages},"
-                f"{self.month}, {self.note},"
-                f"{self.annote}"
-                )
 
-    def bibtex(self):
-        year = str(self.year)
-        key = f"{self.author.split()[-1]}{year[2:]}"
-        entry = f"""@article{{{key},
-    title = {{{self.title}}},
-    author = {{{self.author}}},
-    year = {{{self.year}}},
-    journal = {{{self.journal}}},
-    volume = {{{self.volume}}},
-    number = {{{self.number}}},
-    pages = {{{self.pages}}},
-    month = {{{self.month}}},
-    note = {{{self.note}}},
-    annote = {{{self.annote}}}
-}}"""
-        return entry
-
-class InproceedingsReference:
+class InproceedingsReference(ReferenceBase):
     def __init__(self, **kwargs):
-        self.__dict__.update(kwargs)
+        super().__init__(**kwargs)
         self.type = "inproceedings"
-    # pylint: disable=no-member
-
-    def __str__(self):
-        return (f"{self.title}, {self.author},"
-                f"{self.year}, {self.booktitle},"
-                f"{self.editor}, {self.volume},"
-                f"{self.number}, {self.series},"
-                f"{self.pages}, {self.month},"
-                f"{self.address}, {self.organization},"
-                f"{self.publisher}, {self.note},"
-                f"{self.annote}"
-                )
-
-    def bibtex(self):
-        year = str(self.year)
-        key = f"{self.author.split()[-1]}{year[2:]}"
-        entry = f"""@inproceedings{{{key},
-    title = {{{self.title}}},
-    author = {{{self.author}}},
-    year = {{{self.year}}},
-    booktitle = {{{self.booktitle}}},
-    editor = {{{self.editor}}},
-    volume = {{{self.volume}}},
-    number = {{{self.number}}},
-    series = {{{self.series}}},
-    pages = {{{self.pages}}},
-    month = {{{self.month}}},
-    address = {{{self.address}}},
-    organization = {{{self.organization}}},
-    publisher = {{{self.publisher}}},
-    note = {{{self.note}}},
-    annote = {{{self.annote}}},
-}}"""
-        return entry
+        self.fields = {
+            "title": self.title,
+            "author": self.author,
+            "booktitle": self.booktitle,
+            "year": self.year,
+            "editor": self.editor,
+            "volume": self.volume,
+            "number": self.number,
+            "series": self.series,
+            "pages": self.pages,
+            "month": self.month,
+            "address": self.address,
+            "organization": self.organization,
+            "publisher": self.publisher,
+            "note": self.note,
+            "annote": self.annote,
+        }

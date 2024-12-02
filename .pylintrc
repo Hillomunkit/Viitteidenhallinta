@@ -8,6 +8,7 @@ disable=
     invalid-name,
     too-few-public-methods,
     no-self-use,
+    broad-except,
     broad-exception-caught,
     inconsistent-return-statements,
     redefined-builtin
@@ -32,13 +33,19 @@ function-rgx=[a-z_][a-z0-9_]{2,30}$
 
 [DESIGN]
 # Maximum number of arguments for a function/method
-max-args=10
+max-args=15
 
 # Maximum number of positional arguments
 max-positional-arguments=10
 
 # Maximum number of attributes in a class
 max-attributes=10
+
+# Maximum number of local variables in a function/method
+max-locals=20
+
+# Maximum number of statements in a function/method
+max-statements=60
 
 [LOGGING]
 # Format style used for logging

@@ -26,9 +26,9 @@ A Article Reference Can Be Deleted
     Set Volume  22
     Set Pages  8-9
     Click Button  Lisää
-    Page Should Contain  Artikkeli1, author-testi, 2021
+    Page Should Contain  Artikkeli1, author-testi, test-journal, 2021
     Click Button  Poista
-    Page Should Not Contain  Artikkeli1, author-testi, 2021
+    Page Should Not Contain  Artikkeli1, author-testi, test-journal, 2021
 
 A Inproceedings Reference Can Be Deleted
     Go To  ${HOME_URL}
@@ -39,9 +39,9 @@ A Inproceedings Reference Can Be Deleted
     Set Year  2022
     Set Booktitle  Inproname
     Click Button  Lisää
-    Page Should Contain  Inpro1, author-testi, 2022
+    Page Should Contain  Inpro1, author-testi, Inproname, 2022
     Click Button  Poista
-    Page Should Not Contain  Inpro1, author-testi, 2022
+    Page Should Not Contain  Inpro1, author-testi, Inproname, 2022
 
 *** Keywords ***
 Set Title
