@@ -55,7 +55,18 @@ def get_inproceedings_references():
         title,
         author,
         year,
-        booktitle
+        booktitle,
+        editor,
+        volume,
+        number,
+        series,
+        pages,
+        month,
+        address,
+        organization,
+        publisher,
+        note,
+        annote
     FROM 
         inproceedings
     """
@@ -126,15 +137,45 @@ def create_article_reference(
         )
     db.session.commit()
 
-def create_inproceedings_reference(title, author, year, booktitle):
+def create_inproceedings_reference(
+        title, author, year=None, booktitle=None,
+        editor=None, volume=None, number=None,
+        series=None, pages=None, month=None,
+        address=None, organization=None, publisher=None,
+        note=None, annote=None
+        ):
     sql = """
     INSERT INTO 
-        inproceedings (title, author, year, booktitle)
+        inproceedings (
+        title, author, year, booktitle, editor, volume, number, series,
+        pages, month, address, organization, publisher, note, annote
+        )
     VALUES 
-        (:title, :author, :year, :booktitle)
+        (
+        :title, :author, :year, :booktitle, :editor, :volume, :number, :series,
+        :pages, :month, :address, :organization, :publisher, :note, :annote
+        )
     """
-    db.session.execute(text(sql), { "title": title, "author": author,
-                                   "year": year, "booktitle": booktitle })
+    db.session.execute(
+        text(sql),
+        {
+            "title": title,
+            "author": author,
+            "year": year,
+            "booktitle": booktitle,
+            "editor": editor,
+            "volume": volume,
+            "number": number,
+            "series": series,
+            "pages": pages,
+            "month": month,
+            "address": address,
+            "organization": organization,
+            "publisher": publisher,
+            "note": note,
+            "annote": annote
+        }
+    )
     db.session.commit()
 
 def delete_book_reference(reference_id):

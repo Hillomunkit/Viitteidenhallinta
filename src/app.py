@@ -99,10 +99,30 @@ def reference_creation():
         author = request.form.get("author")
         year = request.form.get("year")
         booktitle = request.form.get("booktitle")
+        editor = request.form.get("editor")
+        volume = request.form.get("volume")
+        number = request.form.get("number")
+        series = request.form.get("series")
+        pages = request.form.get("pages")
+        month = request.form.get("month")
+        address = request.form.get("address")
+        organization = request.form.get("organization")
+        publisher = request.form.get("publisher")
+        note = request.form.get("note")
+        annote = request.form.get("annote")
 
         try:
             validate_reference(title, author, year, reference_type, booktitle=booktitle)
-            create_inproceedings_reference(title, author, year, booktitle)
+            create_inproceedings_reference(
+                title, author,
+                year, booktitle,
+                editor, volume,
+                number, series,
+                pages, month,
+                address, organization,
+                publisher, note,
+                annote
+            )
             return redirect("/")
         except Exception as error:
             flash(str(error))

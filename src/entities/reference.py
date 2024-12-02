@@ -70,7 +70,15 @@ class InproceedingsReference:
     # pylint: disable=no-member
 
     def __str__(self):
-        return f"{self.title}, {self.author}, {self.year}"
+        return (f"{self.title}, {self.author},"
+                f"{self.year}, {self.booktitle},"
+                f"{self.editor}, {self.volume},"
+                f"{self.number}, {self.series},"
+                f"{self.pages}, {self.month},"
+                f"{self.address}, {self.organization},"
+                f"{self.publisher}, {self.note},"
+                f"{self.annote}"
+                )
 
     def bibtex(self):
         year = str(self.year)
@@ -80,5 +88,16 @@ class InproceedingsReference:
     author = {{{self.author}}},
     year = {{{self.year}}},
     booktitle = {{{self.booktitle}}},
+    editor = {{{self.editor}}},
+    volume = {{{self.volume}}},
+    number = {{{self.number}}},
+    series = {{{self.series}}},
+    pages = {{{self.pages}}},
+    month = {{{self.month}}},
+    address = {{{self.address}}},
+    organization = {{{self.organization}}},
+    publisher = {{{self.publisher}}},
+    note = {{{self.note}}},
+    annote = {{{self.annote}}},
 }}"""
         return entry
