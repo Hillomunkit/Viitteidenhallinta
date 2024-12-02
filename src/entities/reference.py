@@ -5,7 +5,7 @@ class BookReference:
     # pylint: disable=no-member
 
     def __str__(self):
-        return f"{self.title}, {self.author}, {self.year}"
+        return f"{self.title}, {self.author}, {self.publisher}, {self.year}"
 
     def bibtex(self):
         year = str(self.year)
@@ -13,6 +13,7 @@ class BookReference:
         entry = f"""@book{{{key},
     title = {{{self.title}}},
     author = {{{self.author}}},
+    author = {{{self.publisher}}},
     year = {{{self.year}}},
 }}"""
         return entry

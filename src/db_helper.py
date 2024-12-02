@@ -47,8 +47,9 @@ def setup_db():
     sql = text(
         f"CREATE TABLE {table_name_books} ("
         "  id SERIAL PRIMARY KEY, "
-        "  title TEXT NOT NULL,"
-        "  author TEXT NOT NULL,"
+        "  title TEXT,"
+        "  author TEXT,"
+        "  publisher TEXT,"
         "  year INTEGER"
         ")"
     )
@@ -66,12 +67,12 @@ def setup_db():
     sql = text(
         f"CREATE TABLE {table_name_articles} ("
         "  id SERIAL PRIMARY KEY, "
-        "  title TEXT NOT NULL,"
-        "  author TEXT NOT NULL,"
+        "  title TEXT,"
+        "  author TEXT,"
         "  year INTEGER,"
-        "  journal TEXT NOT NULL,"
+        "  journal TEXT,"
         "  volume INTEGER,"
-        "  pages TEXT NOT NULL"
+        "  pages TEXT"
         ")"
     )
 
@@ -88,10 +89,10 @@ def setup_db():
     sql = text(
         f"CREATE TABLE {table_name_inproceedings} ("
         "  id SERIAL PRIMARY KEY, "
-        "  title TEXT NOT NULL,"
-        "  author TEXT NOT NULL,"
+        "  title TEXT,"
+        "  author TEXT,"
         "  year INTEGER,"
-        "  booktitle TEXT NOT NULL"
+        "  booktitle TEXT"
         ")"
     )
 

@@ -10,6 +10,7 @@ def get_book_references():
         id,
         title,
         author,
+        publisher
         year
     FROM 
         books
@@ -57,12 +58,12 @@ def get_references():
     all_references = books + articles + inproceedings
     return all_references
 
-def create_book_reference(title, author, year):
+def create_book_reference(title, author, publisher, year):
     sql = """
     INSERT INTO 
-        books (title, author, year)
+        books (title, author, publisher, year)
     VALUES 
-        (:title, :author, :year)
+        (:title, :author, :publisher, :year)
     """
     db.session.execute(text(sql), { "title": title, "author": author, "year": year })
     db.session.commit()
