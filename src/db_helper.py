@@ -50,7 +50,15 @@ def setup_db():
         "  title TEXT,"
         "  author TEXT,"
         "  publisher TEXT,"
-        "  year INTEGER"
+        "  year INTEGER,"
+        "  volume TEXT,"
+        "  number TEXT,"
+        "  series TEXT,"
+        "  address TEXT,"
+        "  edition TEXT,"
+        "  month TEXT,"
+        "  note TEXT,"
+        "  annote TEXT"
         ")"
     )
 
