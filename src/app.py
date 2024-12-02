@@ -1,4 +1,4 @@
-from flask import redirect, render_template, request, jsonify, flash, session
+from flask import redirect, render_template, request, jsonify, flash, session, Response
 from db_helper import reset_db
 from repositories.reference_repository import get_references, create_book_reference, \
     create_article_reference, create_inproceedings_reference, \
@@ -16,6 +16,14 @@ def display_bibtex():
     references = get_references()
     bibtex_content = "\n\n".join(ref.bibtex() for ref in references)
     return render_template("bibtex.html", bibtex_content=bibtex_content)
+
+@app.route("/download_bibtex")
+def download_bibtex():
+    references = get_references()
+    bibtex_content = "\n\n".join(ref.bibtex() for ref in references)
+    response = Response(bibtex_content, mimetype='text/plain')
+    response.headers['Content-Disposition'] = 'attachment; filename="references.bib"'
+    return response
 
 # Saves the chosen reference type into a session object
 @app.route("/choose_reference", methods=["POST"])
