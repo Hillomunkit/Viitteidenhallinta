@@ -5,7 +5,13 @@ class BookReference:
     # pylint: disable=no-member
 
     def __str__(self):
-        return f"{self.title}, {self.author}, {self.publisher}, {self.year}, {self.volume}, {self.number}, {self.series}, {self.address}, {self.edition}, {self.month}, {self.note}, {self.annote}"
+        return (f"{self.title}, {self.author},"
+                f"{self.publisher}, {self.year},"
+                f"{self.volume}, {self.number},"
+                f"{self.series}, {self.address},"
+                f"{self.edition}, {self.month},"
+                f"{self.note}, {self.annote}"
+                )
 
     def bibtex(self):
         year = str(self.year)
@@ -33,7 +39,12 @@ class ArticleReference:
     # pylint: disable=no-member
 
     def __str__(self):
-        return f"{self.title}, {self.author}, {self.year}"
+        return (f"{self.title}, {self.author},"
+                f"{self.year}, {self.volume},"
+                f"{self.number}, {self.pages},"
+                f"{self.month}, {self.note},"
+                f"{self.annote}"
+                )
 
     def bibtex(self):
         year = str(self.year)
@@ -44,7 +55,11 @@ class ArticleReference:
     year = {{{self.year}}},
     journal = {{{self.journal}}},
     volume = {{{self.volume}}},
+    number = {{{self.number}}},
     pages = {{{self.pages}}},
+    month = {{{self.month}}},
+    note = {{{self.note}}},
+    annote = {{{self.annote}}}
 }}"""
         return entry
 

@@ -77,13 +77,16 @@ def setup_db():
         "  id SERIAL PRIMARY KEY, "
         "  title TEXT,"
         "  author TEXT,"
-        "  year INTEGER,"
         "  journal TEXT,"
-        "  volume INTEGER,"
-        "  pages TEXT"
+        "  year INTEGER,"
+        "  volume TEXT,"
+        "  number TEXT,"
+        "  pages TEXT,"
+        "  month TEXT,"
+        "  note TEXT,"
+        "  annote TEXT"
         ")"
     )
-
     db.session.execute(sql)
     db.session.commit()
 
