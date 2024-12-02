@@ -39,11 +39,12 @@ def reference_creation():
     if reference_type == "book":
         title = request.form.get("title")
         author = request.form.get("author")
+        publisher = request.form.get("publisher")
         year = request.form.get("year")
 
         try:
             validate_reference(title, author, year, reference_type)
-            create_book_reference(title, author, year)
+            create_book_reference(title, author, publisher, year)
             return redirect("/")
         except Exception as error:
             flash(str(error))
