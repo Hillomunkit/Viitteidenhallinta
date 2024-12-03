@@ -210,3 +210,124 @@ def delete_inproceedings_reference(reference_id):
 
     db.session.execute(text(sql), {"reference_id": reference_id})
     db.session.commit()
+
+def update_book_reference(reference):
+    sql = """
+    UPDATE
+        books
+    SET title = :title,
+        author = :author,
+        publisher = :publisher,
+        year = :year,
+        volume = :volume,
+        number = :number,
+        series = :series,
+        address = :address,
+        edition = :edition,
+        month = :month,
+        note = :note,
+        annote = :annote
+    WHERE
+        id = :reference_id
+    """
+    db.session.execute(
+    text(sql),
+        {
+        "title": reference["title"],
+        "author": reference["author"],
+        "publisher": reference["publisher"],
+        "year": reference["year"],
+        "volume": reference["volume"],
+        "number": reference["number"],
+        "series": reference["series"],
+        "address": reference["address"],
+        "edition": reference["edition"],
+        "month": reference["month"],
+        "note": reference["note"],
+        "annote": reference["annote"],
+        "reference_id": reference["reference_id"]
+    }
+    )
+    db.session.commit()
+
+def update_article_reference(reference):
+    print(reference)
+    sql = """
+    UPDATE
+        articles
+    SET title = :title,
+        author = :author,
+        year = :year,
+        journal = :journal,
+        volume = :volume,
+        number = :number,
+        pages = :pages,
+        month = :month,
+        note = :note,
+        annote = :annote
+    WHERE
+        id = :reference_id
+    """
+    db.session.execute(
+    text(sql),
+        {
+        "title": reference["title"],
+        "author": reference["author"],
+        "year": reference["year"],
+        "journal": reference["journal"],
+        "volume": reference["volume"],
+        "number": reference["number"],
+        "pages": reference["pages"],
+        "month": reference["month"],
+        "note": reference["note"],
+        "annote": reference["annote"],
+        "reference_id": reference["reference_id"]
+    }
+    )
+    db.session.commit()
+
+def update_inproceedings_reference(reference):
+    print(reference)
+    sql = """
+    UPDATE
+        inproceedings
+    SET title = :title,
+        author = :author,
+        year = :year,
+        booktitle = :booktitle,
+        editor = :editor,
+        volume = :volume,
+        number = :number,
+        series = :series,
+        pages = :pages,
+        month = :month,
+        address = :address,
+        organization = :organization,
+        publisher = :publisher,
+        note = :note,
+        annote = :annote
+    WHERE
+        id = :reference_id
+    """
+    db.session.execute(
+    text(sql),
+        {
+        "title": reference["title"],
+        "author": reference["author"],
+        "year": reference["year"],
+        "booktitle": reference["booktitle"],
+        "editor": reference["editor"],
+        "volume": reference["volume"],
+        "number": reference["number"],
+        "series": reference["series"],
+        "pages": reference["pages"],
+        "month": reference["month"],
+        "address": reference["address"],
+        "organization": reference["organization"],
+        "publisher": reference["publisher"],
+        "note": reference["note"],
+        "annote": reference["annote"],
+        "reference_id": reference["reference_id"]
+    }
+    )
+    db.session.commit()

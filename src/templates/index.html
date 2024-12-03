@@ -18,9 +18,21 @@ Viitteidenhallinta
   </form>
 </div>
 
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+  {% for category, message in messages %}
+    {% if category == "success" %}
+      <div class="flash-message flash-{{ category }}">
+        {{ message }}
+      </div>
+    {% endif %}
+  {% endfor %} 
+{% endif %}
+{% endwith %}
+
 <ul>
   {% for reference in references %}
-    <li style="display: flex">
+    <li style="display: flex; flex-direction: column; margin-bottom: 15px;">
       <div>
         <p>{{ reference }}</p>
         <pre>{{ reference.bibtex() }}</pre>
@@ -31,7 +43,144 @@ Viitteidenhallinta
             Poista
           </button>
         </form>
+        <button onclick="toggleEditForm('{{ reference.type + reference.id|string }}')"  width: auto;>
+          Muokkaa
+        </button>
       </div>
+      <div id="edit-form-{{ reference.type + reference.id|string }}" style="display: none">
+        {% with messages = get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              {% if reference.type + reference.id|string == error_id %}
+                <div class="flash-message flash-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endif %}
+            {% endfor %} 
+          {% endif %}
+        {% endwith %}
+        <form action="/edit_reference" method="post">
+          <input type="hidden" name="reference_id" value="{{ reference.id }}">
+          <input type="hidden" name="reference_type" value="{{ reference.type }}"/>
+          {% if reference.type == "book" %}
+          <label for="content">Teos:</label>
+          <input type="text" name="title" id="title" value="{{ reference.title }}">
+          <br>
+          <label for="content">Kirjoittanut:</label>
+          <input type="text" name="author" id="author" value="{{ reference.author }}">
+          <br>
+          <label for="content">Kustantaja:</label>
+          <input type="text" name="publisher" id="publisher" value="{{ reference.publisher }}">
+          <br>
+          <label for="content">Painosvuosi:</label>
+          <input type="text" name="year" id="year" value="{{ reference.year }}">
+          <br>
+          <label for="content">Voluumi:</label>
+          <input type="text" name="volume" id="volume" value="{{ reference.volume }}">
+          <br>
+          <label for="content">Numero:</label>
+          <input type="text" name="number" id="number" value="{{ reference.number }}">
+          <br>
+          <label for="content">Sarja:</label>
+          <input type="text" name="series" id="series" value="{{ reference.series }}">
+          <br>
+          <label for="content">Osoite:</label>
+          <input type="text" name="address" id="address" value="{{ reference.address }}">
+          <br>
+          <label for="content">Painos:</label>
+          <input type="text" name="edition" id="edition" value="{{ reference.edition }}">
+          <br>
+          <label for="content">Kuukausi:</label>
+          <input type="text" name="month" id="month" value="{{ reference.month }}">
+          <br>
+          <label for="content">Merkintä:</label>
+          <input type="text" name="note" id="note" value="{{ reference.note }}">
+          <br>
+          <label for="content">Annotaatio:</label>
+          <input type="text" name="annote" id="annote" value="{{ reference.annote }}">
+          <br>
+          {% elif reference.type == "article" %}
+          <label for="content">Artikkeli:</label>
+          <input type="text" name="title" id="title" value="{{ reference.title }}">
+          <br>
+          <label for="content">Kirjoittanut:</label>
+          <input type="text" name="author" id="author" value="{{ reference.author }}">
+          <br>
+          <label for="content">Lehti:</label>
+          <input type="text" name="journal" id="journal" value="{{ reference.journal }}">
+          <br>
+          <label for="content">Painosvuosi:</label>
+          <input type="text" name="year" id="year" value="{{ reference.year }}">
+          <br>
+          <label for="content">Volyymi:</label>
+          <input type="text" name="volume" id="volume" value="{{ reference.volume }}">
+          <br>
+          <label for="content">Sivut:</label>
+          <input type="text" name="pages" id="pages" value="{{ reference.pages }}">
+          <br>
+          <label for="content">Numero:</label>
+          <input type="text" name="number" id="number" value="{{ reference.number }}">
+          <br>
+          <label for="content">Kuukausi:</label>
+          <input type="text" name="month" id="month" value="{{ reference.month }}">
+          <br>
+          <label for="content">Merkintä:</label>
+          <input type="text" name="note" id="note" value="{{ reference.note }}">
+          <br>
+          <label for="content">Annotaatio:</label>
+          <input type="text" name="annote" id="annote" value="{{ reference.annote }}">
+          <br>
+          {% elif reference.type == "inproceedings" %}
+          <label for="content">Otsikko:</label>
+          <input type="text" name="title" id="title" value="{{ reference.title }}">
+          <br>
+          <label for="content">Kirjoittanut:</label>
+          <input type="text" name="author" id="author" value="{{ reference.author }}">
+          <br>
+          <label for="content">Painosvuosi:</label>
+          <input type="text" name="year" id="year" value="{{ reference.year }}">
+          <br>
+          <label for="content">Kirjaotsikko:</label>
+          <input type="text" name="booktitle" id="booktitle" value="{{ reference.booktitle }}">
+          <br>
+          <label for="content">Editoija:</label>
+          <input type="text" name="editor" id="editor" value="{{ reference.editor }}">
+          <br>
+          <label for="content">Voluumi:</label>
+          <input type="text" name="volume" id="volume" value="{{ reference.volume }}">
+          <br>
+          <label for="content">Numero:</label>
+          <input type="text" name="number" id="number" value="{{ reference.number }}">
+          <br>
+          <label for="content">Sarja:</label>
+          <input type="text" name="series" id="series" value="{{ reference.series }}">
+          <br>
+          <label for="content">Sivut:</label>
+          <input type="text" name="pages" id="pages" value="{{ reference.pages }}">
+          <br>
+          <label for="content">Osoite:</label>
+          <input type="text" name="address" id="address" value="{{ reference.address }}">
+          <br>
+          <label for="content">Organisaatio:</label>
+          <input type="text" name="organization" id="organization" value="{{ reference.organization }}">
+          <br>
+          <label for="content">Kustantaja:</label>
+          <input type="text" name="publisher" id="publisher" value="{{ reference.publisher }}">
+          <br>
+          <label for="content">Kuukausi:</label>
+          <input type="text" name="month" id="month" value="{{ reference.month }}">
+          <br>
+          <label for="content">Merkintä:</label>
+          <input type="text" name="note" id="note" value="{{ reference.note }}">
+          <br>
+          <label for="content">Annotaatio:</label>
+          <input type="text" name="annote" id="annote" value="{{ reference.annote }}">
+          <br>
+          {% endif %}
+          <button type="submit">Tallenna muutokset</button>
+        </form>
+      </div>
+    </div>
     </li>
   {% endfor %}
 </ul>
@@ -39,5 +188,21 @@ Viitteidenhallinta
 <div>
   <a href="/new_reference">Lisää uusi viite</a>
 </div>
+<script>
+  function toggleEditForm(referenceId) {
+    const form = document.getElementById(`edit-form-${referenceId}`);
+    if (form.style.display === "none") {
+      form.style.display = "block";
+    } else {
+      form.style.display = "none";
+    }
+  }
+</script>
+
+<script>
+  if ("{{show_form}}") {
+      toggleEditForm("{{error_id }}");
+    }
+</script>
 
 {% endblock %}

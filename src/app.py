@@ -2,7 +2,8 @@ from flask import redirect, render_template, request, jsonify, flash, session, R
 from db_helper import reset_db
 from repositories.reference_repository import get_references, create_book_reference, \
     create_article_reference, create_inproceedings_reference, \
-    delete_book_reference, delete_article_reference, delete_inproceedings_reference
+    delete_book_reference, delete_article_reference, delete_inproceedings_reference, \
+    update_book_reference, update_article_reference, update_inproceedings_reference
 from config import app, test_env
 from util import validate_reference
 
@@ -156,4 +157,27 @@ def delete_ref():
     elif reference_type == "inproceedings":
         delete_inproceedings_reference(reference_id)
 
+    return redirect("/")
+
+@app.route("/edit_reference", methods=["POST"])
+def edit_ref():
+    form_data = request.form.to_dict()
+    print(form_data["reference_type"], form_data)
+    try:
+        validate_reference(form_data["title"], form_data["author"],
+                           form_data["year"], form_data["reference_type"])
+    except Exception as error:
+        flash(str(error), "error")
+        references = get_references()
+        return render_template("index.html", references=references,
+                               error_id=form_data["reference_type"]+form_data["reference_id"],
+                               show_form="true")
+
+    if form_data["reference_type"] == "book":
+        update_book_reference(form_data)
+    elif form_data["reference_type"] == "article":
+        update_article_reference(form_data)
+    elif form_data["reference_type"] == "inproceedings":
+        update_inproceedings_reference(form_data)
+    flash("Viite päivitetty!", "success")
     return redirect("/")
