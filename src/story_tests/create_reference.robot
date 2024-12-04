@@ -87,6 +87,116 @@ Display Reference In Desired Form
     Page Should Contain  @article
     Page Should Contain  @inproceedings
 
+A book reference cannot be added without its mandatory fields
+    Go To Starting Page
+    Click Link  Lisää uusi viite
+    Click Button  Kirja
+    Set Title  test-title
+    Set Author  test-author
+    Click Button  Lisää
+    Page Should Contain  "Painovuosi" tulee esittää numeroina
+    Set Title  test-title
+    Set Year  2000
+    Click Button  Lisää
+    Page Should Contain  "Kirjoittanut" ei voi olla tyhjä
+    Set Author  test-author
+    Set year  2000
+    Click Button  Lisää
+    Page Should Contain  "Teos" ei voi olla tyhjä
+
+An article reference cannot be added without its mandatory fields
+    Go To Starting Page
+    Click Link  Lisää uusi viite
+    Click Button  Artikkeli
+    Set Title  test-title
+    Set Author  test-author
+    Click Button  Lisää
+    Page Should Contain  "Painovuosi" tulee esittää numeroina
+    Set Title  test-title
+    Set Year  2000
+    Click Button  Lisää
+    Page Should Contain  "Kirjoittanut" ei voi olla tyhjä
+    Set Author  test-author
+    Set year  2000
+    Click Button  Lisää
+    Page Should Contain  "Artikkeli" ei voi olla tyhjä
+
+An inproceedings reference cannot be added without its mandatory fields
+    Go To Starting Page
+    Click Link  Lisää uusi viite
+    Click Button  Inproceedings
+    Set Title  test-title
+    Set Author  test-author
+    Click Button  Lisää
+    Page Should Contain  "Painovuosi" tulee esittää numeroina
+    Set Title  test-title
+    Set Year  2000
+    Click Button  Lisää
+    Page Should Contain  "Kirjoittanut" ei voi olla tyhjä
+    Set Author  test-author
+    Set year  2000
+    Click Button  Lisää
+    Page Should Contain  "Otsikko" ei voi olla tyhjä
+
+All fields on a book reference can be utilised
+    Go To Starting Page
+    Click Link  Lisää uusi viite
+    Click Button  Kirja
+    Set Title  test-title
+    Set Author  test-author
+    Set Publisher  test-publisher
+    Set Year  2000
+    Set Volume  25
+    Set Number  20
+    Set Series  12
+    Set Address  123
+    Set Edition  2
+    Set Month  July
+    Set Note  test-note
+    Set Annote  test-annote
+    Click Button  Lisää
+    Page Should Contain  test-title, test-author, test-publisher, 2000, 25, 20, 12, 123, 2, July, test-note, test-annote
+
+All fields on an article reference can be utilised
+    Go To Starting Page
+    Click Link  Lisää uusi viite
+    Click Button  Artikkeli
+    Set Title  test-title
+    Set Author  test-author
+    Set Journal  test-journal
+    Set Year  2000
+    Set Volume  25
+    Set Pages  120-150
+    Set Number  20
+    Set Month  July
+    Set Note  test-note
+    Set Annote  test-annote
+    Click Button  Lisää
+    Page Should Contain  test-title, test-author, test-journal, 2000, 25, 20, 120-150, July, test-note, test-annote
+
+All fields on an inproceedings reference can be utilised
+    Go To Starting Page
+    Click Link  Lisää uusi viite
+    Click Button  Inproceedings
+    Set Title  test-title
+    Set Author  test-author
+    Set Year  2000
+    Set Booktitle  test-booktitle
+    Set Editor  test-editor
+    Set Volume  25
+    Set Number  20
+    Set Series  10
+    Set Pages  120-150
+    Set Address  test-address
+    Set Organization  test-organization
+    Set Publisher  test-publisher
+    Set Month  July
+    Set Note  test-note
+    Set Annote  test-annote
+    Click Button  Lisää
+    Page Should Contain  test-title, test-author, test-booktitle, 2000, test-editor, 25, 20, 10, 120-150, July, test-address, test-organization, test-publisher, test-note, test-annote
+
+
 *** Keywords ***
 Set Title
     [Arguments]  ${title}
@@ -115,3 +225,44 @@ Set Pages
 Set Booktitle
     [Arguments]  ${booktitle}
     Input Text  booktitle  ${booktitle}
+
+Set Publisher
+    [Arguments]  ${publisher}
+    Input Text  publisher  ${publisher}
+
+Set Number
+    [Arguments]  ${number}
+    Input Text  number  ${number}
+
+Set Series
+    [Arguments]  ${series}
+    Input Text  series  ${series}
+
+Set Address
+    [Arguments]  ${address}
+    Input Text  address  ${address}
+
+Set Edition
+    [Arguments]  ${edition}
+    Input Text  edition  ${edition}
+
+Set Month
+    [Arguments]  ${month}
+    Input Text  month  ${month}
+
+Set Note
+    [Arguments]  ${note}
+    Input Text  note  ${note}
+
+Set Annote
+    [Arguments]  ${annote}
+    Input Text  annote  ${annote}
+
+Set Editor
+    [Arguments]  ${editor}
+    Input Text  editor  ${editor}
+
+Set Organization
+    [Arguments]  ${organization}
+    Input Text  organization  ${organization}
+
