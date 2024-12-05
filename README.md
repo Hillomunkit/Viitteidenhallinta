@@ -3,6 +3,8 @@
 
 [![GHA_workflow_badge](https://github.com/Hillomunkit/Viitteidenhallinta/workflows/CI/badge.svg)](https://github.com/Hillomunkit/Viitteidenhallinta/actions)
 
+[Testikattavuusraportti](https://drive.google.com/file/d/1mEzOYKXCvCLl9-yTmF254uXwnXeWGIkW/view?usp=drive_link)
+
 # Startup Tutorial
 
 The app needs a PostgreSQL-database to work, we recommend using https://aiven.io.
