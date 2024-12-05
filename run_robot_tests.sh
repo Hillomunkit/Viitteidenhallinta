@@ -2,6 +2,10 @@
 
 echo "Running tests"
 
+# luodaan kansio testituloksille
+OUTPUT_DIR="results"
+mkdir -p $OUTPUT_DIR
+
 # luodaan tietokanta
 poetry run python src/db_helper.py
 
@@ -20,7 +24,7 @@ done
 echo "Flask server is ready"
 
 # suoritetaan testit
-poetry run robot --variable HEADLESS:true src/story_tests
+poetry run robot --variable HEADLESS:true --outputdir $OUTPUT_DIR src/story_tests
 
 status=$?
 
