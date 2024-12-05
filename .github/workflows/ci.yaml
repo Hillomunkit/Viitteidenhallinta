@@ -51,7 +51,7 @@ jobs:
       - name: Run robot tests
         run: bash run_robot_tests.sh
       - name: Upload Robot Framework results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: robot-results
           path: results/
