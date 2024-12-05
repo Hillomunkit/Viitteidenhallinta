@@ -55,9 +55,3 @@ jobs:
         with:
           name: robot-results
           path: results/
-      - name: Coverage report
-        run: poetry run coverage xml
-      - name: Coverage report to Codecov
-        uses: codecov/codecov-action@v4
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
