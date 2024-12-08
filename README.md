@@ -67,4 +67,3 @@ After submitting a reference, you can:
 ### 4. Testing
 * Newly implemented features have corresponding automated tests
 * The codes test coverage is at a reasonable level
-
