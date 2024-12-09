@@ -30,7 +30,11 @@ Viitteidenhallinta
 {% endif %}
 {% endwith %}
 
-<ul>
+<div class="searchbar">
+  <input type="text" id="search" placeholder="kirjoita hakusana" name="search">
+</div>
+
+<ul id="reference-list">
   {% for reference in references %}
     <li style="display: flex; flex-direction: column; margin-bottom: 15px;">
       <div>
@@ -202,4 +206,20 @@ Viitteidenhallinta
     }
 </script>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("search");
+    const itemList = document.getElementById("reference-list");
+    const items = itemList.getElementsByTagName("li");
+
+    searchInput.addEventListener("input", () => {
+      const filter = searchInput.value.toLowerCase();
+
+      for (const item of items) {
+          const text = item.textContent.toLowerCase();
+          item.style.display = text.includes(filter) ? "" : "none";
+      }
+    });
+  });
+</script>
 {% endblock %}
