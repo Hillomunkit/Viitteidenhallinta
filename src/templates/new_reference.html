@@ -7,21 +7,22 @@ Lisää viite
 {% block body %}
 
 <h2>Valitse viitetyyppi</h2>
+<div class="topnav">
+  <form action="/choose_reference" method="post">
+    <input type="hidden" name="reference_type" value="book">
+    <button type="submit">Kirja</button>
+  </form>
 
-<form action="/choose_reference" method="post">
-  <input type="hidden" name="reference_type" value="book">
-  <button type="submit">Kirja</button>
-</form>
+  <form action="/choose_reference" method="post">
+    <input type="hidden" name="reference_type" value="article">
+    <button type="submit">Artikkeli</button>
+  </form>
 
-<form action="/choose_reference" method="post">
-  <input type="hidden" name="reference_type" value="article">
-  <button type="submit">Artikkeli</button>
-</form>
-
-<form action="/choose_reference" method="post">
-  <input type="hidden" name="reference_type" value="inproceedings">
-  <button type="submit">Inproceedings</button>
-</form>
+  <form action="/choose_reference" method="post">
+    <input type="hidden" name="reference_type" value="inproceedings">
+    <button type="submit">Inproceedings</button>
+  </form>
+</div>
 
 {% if reference_type == "book" %}
 
