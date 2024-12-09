@@ -8,14 +8,14 @@ Viitteidenhallinta
 
 <h2>Viitteet</h2>
 
-<div>
-  <a href="/bibtex">Näytä BibTeX muodossa</a>
-</div>
-<br>
-<div>
+<div class="topnav">
+  <a style="font-family: Arial" href="/bibtex">Näytä BibTeX muodossa</a>
+
   <form action="/download_bibtex" method="get">
     <button type="submit">Lataa tiedostona</button>
   </form>
+
+  <a style="font-family: Arial" href="/new_reference">Lisää uusi viite</a>
 </div>
 
 {% with messages = get_flashed_messages(with_categories=True) %}
@@ -185,9 +185,6 @@ Viitteidenhallinta
   {% endfor %}
 </ul>
 
-<div>
-  <a href="/new_reference">Lisää uusi viite</a>
-</div>
 <script>
   function toggleEditForm(referenceId) {
     const form = document.getElementById(`edit-form-${referenceId}`);
