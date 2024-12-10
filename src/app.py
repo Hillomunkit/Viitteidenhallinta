@@ -90,8 +90,7 @@ def reference_creation():
 
 
         try:
-            validate_reference(title, author, year, reference_type,
-                               journal=journal, volume=volume, pages=pages)
+            validate_reference(title, author, year, reference_type)
             create_article_reference(
                 title, author,
                 year, journal,
@@ -123,7 +122,7 @@ def reference_creation():
         annote = request.form.get("annote")
 
         try:
-            validate_reference(title, author, year, reference_type, booktitle=booktitle)
+            validate_reference(title, author, year, reference_type)
             create_inproceedings_reference(
                 title, author,
                 year, booktitle,

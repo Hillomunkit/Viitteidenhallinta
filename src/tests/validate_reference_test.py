@@ -15,11 +15,9 @@ class TestReferenceValidation(unittest.TestCase):
 
     def test_valid_article_reference_does_not_raise_error(self):
         self.assertEqual(validate_reference(self.title, self.author, self.year, "article"), True)
-        self.assertEqual(validate_reference(self.title, self.author, self.year, "article", journal="Journal of testing", volume="32", pages="87-133"), True)
 
     def test_valid_inproceedings_reference_does_not_raise_error(self):
         self.assertEqual(validate_reference(self.title, self.author, self.year, "inproceedings"), True)
-        self.assertEqual(validate_reference(self.title, self.author, self.year, "inproceedings", booktitle="Title of Testbook"), True)
 
     def test_empty_title_raises_an_error(self):
         with self.assertRaises(UserInputError) as error:
@@ -94,48 +92,3 @@ class TestReferenceValidation(unittest.TestCase):
         with self.assertRaises(UserInputError) as error:
             validate_reference(self.title, self.author, str(self.current_year + 1), self.reference_type)
         self.assertEqual(str(error.exception), f"\"Painovuosi\" tulee olla 1000-{self.current_year} väliltä")
-
-    def test_only_a_space_in_journal_raises_an_error(self):
-        with self.assertRaises(UserInputError) as error:
-            validate_reference(self.title, self.author, self.year, "article", journal=" ")
-        self.assertEqual(str(error.exception), "\"Lehti\" ei voi olla pelkkiä välilyöntejä")
-
-    def test_too_long_journal_raises_an_error(self):
-        with self.assertRaises(UserInputError) as error:
-            validate_reference(self.title, self.author, self.year, "article", journal="A" * 101)
-        self.assertEqual(str(error.exception), "\"Lehti\" maksimipituus on 100 merkkiä")
-        
-    def test_only_a_space_in_volume_raises_an_error(self):
-        with self.assertRaises(UserInputError) as error:
-            validate_reference(self.title, self.author, self.year, "article", volume=" ")
-        self.assertEqual(str(error.exception), "\"Volyymi\" ei voi olla pelkkiä välilyöntejä")
-
-    def test_too_long_volume_raises_an_error(self):
-        with self.assertRaises(UserInputError) as error:
-            validate_reference(self.title, self.author, self.year, "article", volume="A" * 11)
-        self.assertEqual(str(error.exception), "\"Volyymi\" tulee olla 1-10 merkkiä")
-
-    def test_incorrect_page_number_format_raises_an_error(self):
-        with self.assertRaises(UserInputError) as error:
-            validate_reference(self.title, self.author, self.year, "article", pages="30 54")
-        self.assertEqual(str(error.exception), "\"Sivut\" on virheellisessä formaatissa")
-
-    def test_too_long_page_number_input_raises_an_error(self):
-        with self.assertRaises(UserInputError) as error:
-            validate_reference(self.title, self.author, self.year, "article", pages="10527-10758")
-        self.assertEqual(str(error.exception), "\"Sivut\" tulee olla 1-10 merkkiä")
-
-    def test_correct_page_number_format_does_not_raise_an_error(self):
-        self.assertEqual(validate_reference(self.title, self.author, self.year, "article", pages="30–54"), True)
-        self.assertEqual(validate_reference(self.title, self.author, self.year, "article", pages="30-54"), True)
-        self.assertEqual(validate_reference(self.title, self.author, self.year, "article", pages="1000-1215"), True)
-
-    def test_only_a_space_in_booktitle_raises_an_error(self):
-        with self.assertRaises(UserInputError) as error:
-            validate_reference(self.title, self.author, self.year, "inproceedings", booktitle=" ")
-        self.assertEqual(str(error.exception), "\"Kirjaotsikko\" ei voi olla pelkkiä välilyöntejä")
-
-    def test_too_long_booktitle_raises_an_error(self):
-        with self.assertRaises(UserInputError) as error:
-            validate_reference(self.title, self.author, self.year, "inproceedings", booktitle="A" * 101)
-        self.assertEqual(str(error.exception), "\"Kirjaotsikko\" maksimipituus on 100 merkkiä")
