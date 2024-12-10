@@ -32,14 +32,19 @@ Viitteidenhallinta
 
 <div class="searchbar">
   <input type="text" id="search" placeholder="kirjoita hakusana" name="search">
+  <label><input type="checkbox" class="type-filter" value="book" checked> Kirjat</label>
+  <label><input type="checkbox" class="type-filter" value="article" checked> Artikkelit</label>
+  <label><input type="checkbox" class="type-filter" value="inproceedings" checked> Inproceedings</label>  
 </div>
 
 <ul id="reference-list">
   {% for reference in references %}
-    <li style="display: flex; flex-direction: column; margin-bottom: 15px;">
-      <div>
+    <li style="display: flex; flex-direction: column; margin-bottom: 15px;" data-type="{{ reference.type }}">
+      <div class="searchContent">
         <p>{{ reference }}</p>
         <pre>{{ reference.bibtex() }}</pre>
+      </div>
+      <div>
         <form action="/delete_reference" method="post">
           <input type="hidden" name="reference_id" value="{{ reference.id }}"/>
           <input type="hidden" name="reference_type" value="{{ reference.type }}"/>
@@ -211,15 +216,23 @@ Viitteidenhallinta
     const searchInput = document.getElementById("search");
     const itemList = document.getElementById("reference-list");
     const items = itemList.getElementsByTagName("li");
+    const referenceFilters = document.querySelectorAll(".type-filter");
 
-    searchInput.addEventListener("input", () => {
+    searchInput.addEventListener("input", applyFilters);
+    referenceFilters.forEach(checkbox => checkbox.addEventListener("change", applyFilters));
+
+    function applyFilters() {
       const filter = searchInput.value.toLowerCase();
+      const selectedTypes = Array.from(referenceFilters)
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => checkbox.value);
 
       for (const item of items) {
-          const text = item.textContent.toLowerCase();
-          item.style.display = text.includes(filter) ? "" : "none";
+        const text = item.querySelector("div.searchContent").textContent.toLowerCase();
+        const type = item.dataset.type;
+        item.style.display = text.includes(filter) && selectedTypes.includes(type) ? "" : "none";
       }
-    });
+    }
   });
 </script>
 {% endblock %}
