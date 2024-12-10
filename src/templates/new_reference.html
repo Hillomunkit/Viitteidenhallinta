@@ -35,6 +35,8 @@
     {% endfor %}
   {% endif %}
   {% endwith %}
+
+<div class="box">
   <form action="/create_reference" method="post">
     <label for="content">Teos:</label>
     <input type="text" name="title" id="title" >
@@ -78,6 +80,7 @@
       Lisää
     </button>
   </form>
+</div>
 
 {% elif reference_type == "article" %}
 
@@ -92,43 +95,45 @@
   {% endfor %}
 {% endif %}
 {% endwith %}
-<form action="/create_reference" method="post">
-  <label for="content">Artikkeli:</label>
-  <input type="text" name="title" id="title" >
-  <br>
-  <label for="content">Kirjoittanut:</label>
-  <input type="text" name="author" id="author" >
-  <br>
-  <label for="content">Lehti:</label>
-  <input type="text" name="journal" id="journal" >
-  <br>
-  <label for="content">Painosvuosi:</label>
-  <input type="text" name="year" id="year" >
-  <br>
-  <label for="content">Volyymi:</label>
-  <input type="text" name="volume" id="volume" >
-  <br>
-  <label for="content">Sivut:</label>
-  <input type="text" name="pages" id="pages" >
-  <input type="hidden" name="reference_type" value="{{ reference_type }}"/>
-  <br>
-  <label for="content">Numero:</label>
-  <input type="text" name="number" id="number" >
-  <br>
-  <label for="content">Kuukausi:</label>
-  <input type="text" name="month" id="month" >
-  <br>
-  <label for="content">Merkintä:</label>
-  <input type="text" name="note" id="note" >
-  <br>
-  <label for="content">Annotaatio:</label>
-  <input type="text" name="annote" id="annote" >
-  <br>
+<div class="box">
+  <form action="/create_reference" method="post">
+    <label for="content">Artikkeli:</label>
+    <input type="text" name="title" id="title" >
+    <br>
+    <label for="content">Kirjoittanut:</label>
+    <input type="text" name="author" id="author" >
+    <br>
+    <label for="content">Lehti:</label>
+    <input type="text" name="journal" id="journal" >
+    <br>
+    <label for="content">Painosvuosi:</label>
+    <input type="text" name="year" id="year" >
+    <br>
+    <label for="content">Volyymi:</label>
+    <input type="text" name="volume" id="volume" >
+    <br>
+    <label for="content">Sivut:</label>
+    <input type="text" name="pages" id="pages" >
+    <input type="hidden" name="reference_type" value="{{ reference_type }}"/>
+    <br>
+    <label for="content">Numero:</label>
+    <input type="text" name="number" id="number" >
+    <br>
+    <label for="content">Kuukausi:</label>
+    <input type="text" name="month" id="month" >
+    <br>
+    <label for="content">Merkintä:</label>
+    <input type="text" name="note" id="note" >
+    <br>
+    <label for="content">Annotaatio:</label>
+    <input type="text" name="annote" id="annote" >
+    <br>
 
-  <button type="submit">
-    Lisää
-  </button>
-</form>
+    <button type="submit">
+      Lisää
+    </button>
+  </form>
+</div>
 
 {% elif reference_type == "inproceedings" %}
 
@@ -143,59 +148,61 @@
   {% endfor %}
 {% endif %}
 {% endwith %}
-<form action="/create_reference" method="post">
-  <label for="content">Otsikko:</label>
-  <input type="text" name="title" id="title" >
-  <br>
-  <label for="content">Kirjoittanut:</label>
-  <input type="text" name="author" id="author" >
-  <br>
-  <label for="content">Painosvuosi:</label>
-  <input type="text" name="year" id="year" >
-  <br>
-  <label for="content">Kirjaotsikko:</label>
-  <input type="text" name="booktitle" id="booktitle" >
-  <input type="hidden" name="reference_type" value="{{ reference_type }}"/>
-  <br>
-  <label for="content">Editoija:</label>
-  <input type="text" name="editor" id="editor" >
-  <br>
-  <label for="content">Voluumi:</label>
-  <input type="text" name="volume" id="volume" >
-  <br>
-  <label for="content">Numero:</label>
-  <input type="text" name="number" id="number" >
-  <br>
-  <label for="content">Sarja:</label>
-  <input type="text" name="series" id="series" >
-  <br>
-  <label for="content">Sivut:</label>
-  <input type="text" name="pages" id="pages" >
-  <br>
-  <label for="content">Osoite:</label>
-  <input type="text" name="address" id="address" >
-  <br>
-  <label for="content">Organisaatio:</label>
-  <input type="text" name="organization" id="organization" >
-  <br>
-  <label for="content">Kustantaja:</label>
-  <input type="text" name="publisher" id="publisher" >
-  <br>
-  <label for="content">Kuukausi:</label>
-  <input type="text" name="month" id="month" >
-  <br>
-  <label for="content">Merkintä:</label>
-  <input type="text" name="note" id="note" >
-  <br>
-  <label for="content">Annotaatio:</label>
-  <input type="text" name="annote" id="annote" >
-  <br>
+<div class="box">
+  <form action="/create_reference" method="post">
+    <label for="content">Otsikko:</label>
+    <input type="text" name="title" id="title" >
+    <br>
+    <label for="content">Kirjoittanut:</label>
+    <input type="text" name="author" id="author" >
+    <br>
+    <label for="content">Painosvuosi:</label>
+    <input type="text" name="year" id="year" >
+    <br>
+    <label for="content">Kirjaotsikko:</label>
+    <input type="text" name="booktitle" id="booktitle" >
+    <input type="hidden" name="reference_type" value="{{ reference_type }}"/>
+    <br>
+    <label for="content">Editoija:</label>
+    <input type="text" name="editor" id="editor" >
+    <br>
+    <label for="content">Voluumi:</label>
+    <input type="text" name="volume" id="volume" >
+    <br>
+    <label for="content">Numero:</label>
+    <input type="text" name="number" id="number" >
+    <br>
+    <label for="content">Sarja:</label>
+    <input type="text" name="series" id="series" >
+    <br>
+    <label for="content">Sivut:</label>
+    <input type="text" name="pages" id="pages" >
+    <br>
+    <label for="content">Osoite:</label>
+    <input type="text" name="address" id="address" >
+    <br>
+    <label for="content">Organisaatio:</label>
+    <input type="text" name="organization" id="organization" >
+    <br>
+    <label for="content">Kustantaja:</label>
+    <input type="text" name="publisher" id="publisher" >
+    <br>
+    <label for="content">Kuukausi:</label>
+    <input type="text" name="month" id="month" >
+    <br>
+    <label for="content">Merkintä:</label>
+    <input type="text" name="note" id="note" >
+    <br>
+    <label for="content">Annotaatio:</label>
+    <input type="text" name="annote" id="annote" >
+    <br>
 
 
-  <button type="submit">
-    Lisää
-  </button>
-</form>
+    <button type="submit">
+      Lisää
+    </button>
+  </form>
+</div>
 
 {% endif %}
 
