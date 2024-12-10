@@ -1,11 +1,8 @@
 {% extends "layout.html" %}
 
-{% block title %}
-Lisää viite
-{% endblock %}
 
 {% block body %}
-<h2>Valitse viitetyyppi</h2>
+<h2 style="font-family: Arial">Valitse viitetyyppi</h2>
 <div class="topnav">
   <form action="/choose_reference" method="post">
     <input type="hidden" name="reference_type" value="book">
@@ -27,7 +24,7 @@ Lisää viite
 
 {% if reference_type == "book" %}
 
-  <h2>Lisää kirjaviite</h2>
+  <h3 style="font-family: Arial">Lisää kirjaviite</h3>
 
   {% with messages = get_flashed_messages(with_categories=True) %}
   {% if messages %}
