@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <title>Viitteidenhallinta -{% block title %}{% endblock %}</title>
+    <title>Viitteidenhallinta {% block title %}{% endblock %}</title>
     <h1 style="font-family: Arial">Viitteidenhallinta</h1>
     <style>
       .flash-message {
@@ -40,13 +40,6 @@
       .topnav button {
           float: left;
           display: block;
-          color: white;
-          text-align: center;
-          padding: 14px 16px;
-          text-decoration: none;
-      }
-
-      .topnav button {
           background-color: #333;
           border: none;
           color: white;
@@ -73,6 +66,7 @@
       label {
           font-family: Arial;
       }
+
 
     </style>
   </head>
