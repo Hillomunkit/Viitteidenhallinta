@@ -27,16 +27,16 @@ Lisää viite
 
   <h2>Lisää kirjaviite</h2>
 
+  {% with messages = get_flashed_messages(with_categories=True) %}
+  {% if messages %}
+    {% for category, message in messages %}
+    <div class="flash-message flash-{{ category }}">
+      {{ message }}
+    </div>
+    {% endfor %}
+  {% endif %}
+  {% endwith %}
   <form action="/create_reference" method="post">
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <ul>
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
     <label for="content">Teos:</label>
     <input type="text" name="title" id="title" >
     <br>
@@ -84,16 +84,16 @@ Lisää viite
 
 <h2>Lisää artikkeliviite</h2>
 
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+  {% for category, message in messages %}
+  <div class="flash-message flash-{{ category }}">
+    {{ message }}
+  </div>
+  {% endfor %}
+{% endif %}
+{% endwith %}
 <form action="/create_reference" method="post">
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul>
-      {% for message in messages %}
-        <li>{{ message }}</li>
-      {% endfor %}
-      </ul>
-    {% endif %}
-  {% endwith %}
   <label for="content">Artikkeli:</label>
   <input type="text" name="title" id="title" >
   <br>
@@ -135,16 +135,16 @@ Lisää viite
 
 <h2>Lisää inproceedings-viite</h2>
 
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+  {% for category, message in messages %}
+  <div class="flash-message flash-{{ category }}">
+    {{ message }}
+  </div>
+  {% endfor %}
+{% endif %}
+{% endwith %}
 <form action="/create_reference" method="post">
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul>
-      {% for message in messages %}
-        <li>{{ message }}</li>
-      {% endfor %}
-      </ul>
-    {% endif %}
-  {% endwith %}
   <label for="content">Otsikko:</label>
   <input type="text" name="title" id="title" >
   <br>

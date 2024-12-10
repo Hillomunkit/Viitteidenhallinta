@@ -19,10 +19,16 @@
       .flash-success {
           background-color: green;
           color: white;
+          animation: fadeOut 5s forwards;
       }
       .flash-error {
           background-color: red;
           color: white;
+          animation: fadeOut 5s forwards;
+      }
+      @keyframes fadeOut {
+          0% { opacity: 1; }
+          100% { opacity: 0; display: none; }
       }
       /* Style the top navigation bar */
       .topnav {

@@ -70,9 +70,10 @@ def reference_creation():
                 note,
                 annote
             )
+            flash("Viite lisätty!", "success")
             return redirect("/")
         except Exception as error:
-            flash(str(error))
+            flash(str(error), "error")
             return  redirect("/new_reference")
 
     elif reference_type == "article":
@@ -98,9 +99,10 @@ def reference_creation():
                 pages, month,
                 note, annote
             )
+            flash("Viite lisätty!", "success")
             return redirect("/")
         except Exception as error:
-            flash(str(error))
+            flash(str(error), "error")
             return  redirect("/new_reference")
 
     elif reference_type == "inproceedings":
@@ -132,9 +134,10 @@ def reference_creation():
                 publisher, note,
                 annote
             )
+            flash("Viite lisätty!", "success")
             return redirect("/")
         except Exception as error:
-            flash(str(error))
+            flash(str(error), "error")
             return  redirect("/new_reference")
 
 # testausta varten oleva reitti
