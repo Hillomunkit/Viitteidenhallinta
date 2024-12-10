@@ -2,8 +2,8 @@ from flask import redirect, render_template, request, jsonify, flash, session, R
 from db_helper import reset_db
 from repositories.reference_repository import get_references, create_book_reference, \
     create_article_reference, create_inproceedings_reference, \
-    delete_book_reference, delete_article_reference, delete_inproceedings_reference, \
-    update_book_reference, update_article_reference, update_inproceedings_reference
+    delete_reference, update_book_reference, update_article_reference, \
+    update_inproceedings_reference
 from config import app, test_env
 from util import validate_reference
 
@@ -70,7 +70,7 @@ def reference_creation():
                 note,
                 annote
             )
-            flash("Viite lisätty!", "success")
+            flash("Viite lisätty", "success")
             return redirect("/")
         except Exception as error:
             flash(str(error), "error")
@@ -98,7 +98,7 @@ def reference_creation():
                 pages, month,
                 note, annote
             )
-            flash("Viite lisätty!", "success")
+            flash("Viite lisätty", "success")
             return redirect("/")
         except Exception as error:
             flash(str(error), "error")
@@ -133,7 +133,7 @@ def reference_creation():
                 publisher, note,
                 annote
             )
-            flash("Viite lisätty!", "success")
+            flash("Viite lisätty", "success")
             return redirect("/")
         except Exception as error:
             flash(str(error), "error")
@@ -151,14 +151,12 @@ if test_env:
 def delete_ref():
     reference_id = request.form.get("reference_id")
     reference_type = request.form.get("reference_type")
-
-    if reference_type == "book":
-        delete_book_reference(reference_id)
-    elif reference_type == "article":
-        delete_article_reference(reference_id)
-    elif reference_type == "inproceedings":
-        delete_inproceedings_reference(reference_id)
-
+    table_names = {"book": "books",
+                    "article": "articles",
+                    "inproceedings": "inproceedings"}
+    if reference_type in table_names:
+        delete_reference(table_names[reference_type], reference_id)
+    flash("Viite poistettu", "success")
     return redirect("/")
 
 @app.route("/edit_reference", methods=["POST"])
@@ -181,5 +179,5 @@ def edit_ref():
         update_article_reference(form_data)
     elif form_data["reference_type"] == "inproceedings":
         update_inproceedings_reference(form_data)
-    flash("Viite päivitetty!", "success")
+    flash("Viite päivitetty", "success")
     return redirect("/")
