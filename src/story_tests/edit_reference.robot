@@ -36,42 +36,4 @@ Existing fields on a reference can be edited
     Click Button  Tallenna muutokset
     Page Should Contain  test-article2, test-author, 1980
 
-
-
 *** Keywords ***
-Set Title
-    [Arguments]  ${title}
-    Input Text  title  ${title}
-
-Set Author
-    [Arguments]  ${author}
-    Input Text  author  ${author}
-
-Set Year
-    [Arguments]  ${year}
-    Input Text  year  ${year}
-
-Set Journal
-    [Arguments]  ${journal}
-    Input Text  journal  ${journal}
-
-Set Volume
-    [Arguments]  ${volume}
-    Input Text  volume  ${volume}
-
-Set Pages
-    [Arguments]  ${pages}
-    Input Text  pages  ${pages}
-
-Set Booktitle
-    [Arguments]  ${booktitle}
-    Input Text  booktitle  ${booktitle}
-
-Set Publisher
-    [Arguments]  ${publisher}
-    Input Text  publisher  ${publisher}
-
-Set Number
-    [Arguments]  ${number}
-    Input Text  number  ${number}
-
