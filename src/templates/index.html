@@ -38,9 +38,9 @@
   <ul id="reference-list">
     {% for reference in references %}
       <li style="display: flex; flex-direction: column; margin-bottom: 15px;" data-type="{{ reference.type }}">
-        <div class="searchContent">
-          <p>{{ reference }}</p>
-          <pre>{{ reference.bibtex() }}</pre>
+        <div class="searchContent" style="display: flex; flex-direction: column; gap: 10px; text-align: left; align-items: flex-start;">
+          <p style="margin: 0">{{ reference }}</p>
+          <pre style="white-space: pre-wrap; word-wrap: break-word; margin: 0;">{{ reference.bibtex() }}</pre>
         </div>
         <div>
           <form action="/delete_reference" method="post">
