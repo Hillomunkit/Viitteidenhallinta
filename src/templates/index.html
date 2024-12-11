@@ -34,38 +34,38 @@
   <label><input type="checkbox" class="type-filter" value="inproceedings" checked> Inproceedings</label>  
 </div>
 
-<ul id="reference-list">
-  {% for reference in references %}
-    <li style="display: flex; flex-direction: column; margin-bottom: 15px;" data-type="{{ reference.type }}">
-      <div class="searchContent">
-        <p>{{ reference }}</p>
-        <pre>{{ reference.bibtex() }}</pre>
-      </div>
-      <div>
-        <form action="/delete_reference" method="post">
-          <input type="hidden" name="reference_id" value="{{ reference.id }}"/>
-          <input type="hidden" name="reference_type" value="{{ reference.type }}"/>
-          <button type="submit">
-            Poista
+<div class="box">
+  <ul id="reference-list">
+    {% for reference in references %}
+      <li style="display: flex; flex-direction: column; margin-bottom: 15px;" data-type="{{ reference.type }}">
+        <div class="searchContent">
+          <p>{{ reference }}</p>
+          <pre>{{ reference.bibtex() }}</pre>
+        </div>
+        <div>
+          <form action="/delete_reference" method="post">
+            <input type="hidden" name="reference_id" value="{{ reference.id }}"/>
+            <input type="hidden" name="reference_type" value="{{ reference.type }}"/>
+            <button type="submit">
+              Poista
+            </button>
+          </form>
+          <button onclick="toggleEditForm('{{ reference.type + reference.id|string }}')"  width: auto;>
+            Muokkaa
           </button>
-        </form>
-        <button onclick="toggleEditForm('{{ reference.type + reference.id|string }}')"  width: auto;>
-          Muokkaa
-        </button>
-      </div>
-      <div id="edit-form-{{ reference.type + reference.id|string }}" style="display: none">
-        {% with messages = get_flashed_messages(with_categories=True) %}
-          {% if messages %}
-            {% for category, message in messages %}
-              {% if reference.type + reference.id|string == error_id %}
-                <div class="flash-message flash-{{ category }}">
-                  {{ message }}
-                </div>
-              {% endif %}
-            {% endfor %} 
-          {% endif %}
-        {% endwith %}
-        <div class="box">
+        </div>
+        <div id="edit-form-{{ reference.type + reference.id|string }}" style="display: none">
+          {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                {% if reference.type + reference.id|string == error_id %}
+                  <div class="flash-message flash-{{ category }}">
+                    {{ message }}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
           <form action="/edit_reference" method="post">
             <input type="hidden" name="reference_id" value="{{ reference.id }}">
             <input type="hidden" name="reference_type" value="{{ reference.type }}"/>
@@ -186,11 +186,11 @@
             {% endif %}
             <button type="submit">Tallenna muutokset</button>
           </form>
-          </div>
-      </div>
-    </li>
-  {% endfor %}
-</ul>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 
 <script>
   function toggleEditForm(referenceId) {
@@ -233,4 +233,4 @@
     }
   });
 </script>
-{% endblock %}
+{% endblock %}.
