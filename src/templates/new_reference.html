@@ -36,61 +36,51 @@
   {% endif %}
   {% endwith %}
 
-  <div class="box">
-    <form action="/create_reference" method="post">
-      <div>
-        <label for="title">Teos:</label>
-        <input style="border: 3px solid #f44336" type="text" name="title" id="title">
-      </div>
-      <div>
-        <label for="author">Kirjoittanut:</label>
-        <input style="border: 3px solid #f44336" type="text" name="author" id="author">
-      </div>
-      <div>
-        <label for="publisher">Kustantaja:</label>
-        <input style="border: 3px solid #f44336" type="text" name="publisher" id="publisher">
-      </div>
-      <div>
-        <label for="year">Painosvuosi:</label>
-        <input style="border: 3px solid #f44336" type="text" name="year" id="year">
-        <input type="hidden" name="reference_type" value="{{ reference_type }}">
-      </div>
-      <div>
-        <label for="volume">Voluumi:</label>
-        <input type="text" name="volume" id="volume">
-      </div>
-      <div>
-        <label for="number">Numero:</label>
-        <input type="text" name="number" id="number">
-      </div>
-      <div>
-        <label for="series">Sarja:</label>
-        <input type="text" name="series" id="series">
-      </div>
-      <div>
-        <label for="address">Osoite:</label>
-        <input type="text" name="address" id="address">
-      </div>
-      <div>
-        <label for="edition">Painos:</label>
-        <input type="text" name="edition" id="edition">
-      </div>
-      <div>
-        <label for="month">Kuukausi:</label>
-        <input type="text" name="month" id="month">
-      </div>
-      <div>
-        <label for="note">Merkintä:</label>
-        <input type="text" name="note" id="note">
-      </div>
-      <div>
-        <label for="annote">Annotaatio:</label>
-        <input type="text" name="annote" id="annote">
-      </div>
-      <p style="color: red; font-size: 14px; margin-top: 10px;">*Punaiset kentät ovat pakollisia</p>
-      <button type="submit">Lisää</button>
-    </form>
-  </div>
+<div class="box">
+  <form action="/create_reference" method="post">
+    <label for="content">Teos:</label>
+    <input style="border: 3px solid #f44336" type="text" name="title" id="title" >
+    <br>
+    <label for="content">Kirjoittanut:</label>
+    <input style="border: 3px solid #f44336" type="text" name="author" id="author" >
+    <br>
+    <label for="content">Kustantaja:</label>
+    <input style="border: 3px solid #f44336" type="text" name="publisher" id="publisher" >
+    <br>
+    <label for="content">Painosvuosi:</label>
+    <input style="border: 3px solid #f44336" type="text" name="year" id="year" >
+    <input type="hidden" name="reference_type" value="{{ reference_type }}"/>
+    <br>
+    <label for="content">Voluumi:</label>
+    <input type="text" name="volume" id="volume" >
+    <br>
+    <label for="content">Numero:</label>
+    <input type="text" name="number" id="number" >
+    <br>
+    <label for="content">Sarja:</label>
+    <input type="text" name="series" id="series" >
+    <br>
+    <label for="content">Osoite:</label>
+    <input type="text" name="address" id="address" >
+    <br>
+    <label for="content">Painos:</label>
+    <input type="text" name="edition" id="edition" >
+    <br>
+    <label for="content">Kuukausi:</label>
+    <input type="text" name="month" id="month" >
+    <br>
+    <label for="content">Merkintä:</label>
+    <input type="text" name="note" id="note" >
+    <br>
+    <label for="content">Annotaatio:</label>
+    <input type="text" name="annote" id="annote" >
+    <br>
+    <p style="color: red; font-size: 14px; margin-top: 10px;">*Punaiset kentät ovat pakollisia</p>
+    <button type="submit">
+      Lisää
+    </button>
+  </form>
+</div>
 
 {% elif reference_type == "article" %}
 
@@ -107,48 +97,41 @@
 {% endwith %}
 <div class="box">
   <form action="/create_reference" method="post">
-    <div>
-      <label for="title">Artikkeli:</label>
-      <input style="border: 3px solid #f44336" type="text" name="title" id="title">
-    </div>
-    <div>
-      <label for="author">Kirjoittanut:</label>
-      <input style="border: 3px solid #f44336" type="text" name="author" id="author">
-    </div>
-    <div>
-      <label for="journal">Lehti:</label>
-      <input style="border: 3px solid #f44336" type="text" name="journal" id="journal">
-    </div>
-    <div>
-      <label for="year">Painosvuosi:</label>
-      <input style="border: 3px solid #f44336" type="text" name="year" id="year">
-    </div>
-    <div>
-      <label for="volume">Volyymi:</label>
-      <input type="text" name="volume" id="volume">
-    </div>
-    <div>
-      <label for="pages">Sivut:</label>
-      <input type="text" name="pages" id="pages">
-    </div>
-    <div>
-      <label for="number">Numero:</label>
-      <input type="text" name="number" id="number">
-    </div>
-    <div>
-      <label for="month">Kuukausi:</label>
-      <input type="text" name="month" id="month">
-    </div>
-    <div>
-      <label for="note">Merkintä:</label>
-      <input type="text" name="note" id="note">
-    </div>
-    <div>
-      <label for="annote">Annotaatio:</label>
-      <input type="text" name="annote" id="annote">
-    </div>
+    <label for="content">Artikkeli:</label>
+    <input style="border: 3px solid #f44336" type="text" name="title" id="title" >
+    <br>
+    <label for="content">Kirjoittanut:</label>
+    <input style="border: 3px solid #f44336" type="text" name="author" id="author" >
+    <br>
+    <label for="content">Lehti:</label>
+    <input style="border: 3px solid #f44336" type="text" name="journal" id="journal" >
+    <br>
+    <label for="content">Painosvuosi:</label>
+    <input style="border: 3px solid #f44336" type="text" name="year" id="year" >
+    <br>
+    <label for="content">Volyymi:</label>
+    <input type="text" name="volume" id="volume" >
+    <br>
+    <label for="content">Sivut:</label>
+    <input type="text" name="pages" id="pages" >
+    <input type="hidden" name="reference_type" value="{{ reference_type }}"/>
+    <br>
+    <label for="content">Numero:</label>
+    <input type="text" name="number" id="number" >
+    <br>
+    <label for="content">Kuukausi:</label>
+    <input type="text" name="month" id="month" >
+    <br>
+    <label for="content">Merkintä:</label>
+    <input type="text" name="note" id="note" >
+    <br>
+    <label for="content">Annotaatio:</label>
+    <input type="text" name="annote" id="annote" >
+    <br>
     <p style="color: red; font-size: 14px; margin-top: 10px;">*Punaiset kentät ovat pakollisia</p>
-    <button type="submit">Lisää</button>
+    <button type="submit">
+      Lisää
+    </button>
   </form>
 </div>
 
@@ -167,69 +150,56 @@
 {% endwith %}
 <div class="box">
   <form action="/create_reference" method="post">
-      <div>
-        <label for="title">Otsikko:</label>
-        <input style="border: 3px solid #f44336" type="text" name="title" id="title">
-      </div>
-      <div>
-        <label for="author">Kirjoittanut:</label>
-        <input style="border: 3px solid #f44336" type="text" name="author" id="author">
-      </div>
-      <div>
-        <label for="year">Painosvuosi:</label>
-        <input type="text" name="year" id="year">
-      </div>
-      <div>
-        <label for="booktitle">Kirjaotsikko:</label>
-        <input type="text" name="booktitle" id="booktitle">
-        <input type="hidden" name="reference_type" value="{{ reference_type }}">
-      </div>
-      <div>
-        <label for="editor">Editoija:</label>
-        <input type="text" name="editor" id="editor">
-      </div>
-      <div>
-        <label for="volume">Voluumi:</label>
-        <input type="text" name="volume" id="volume">
-      </div>
-      <div>
-        <label for="number">Numero:</label>
-        <input type="text" name="number" id="number">
-      </div>
-      <div>
-        <label for="series">Sarja:</label>
-        <input type="text" name="series" id="series">
-      </div>
-      <div>
-        <label for="pages">Sivut:</label>
-        <input type="text" name="pages" id="pages">
-      </div>
-      <div>
-        <label for="address">Osoite:</label>
-        <input type="text" name="address" id="address">
-      </div>
-      <div>
-        <label for="organization">Organisaatio:</label>
-        <input type="text" name="organization" id="organization">
-      </div>
-      <div>
-        <label for="publisher">Kustantaja:</label>
-        <input type="text" name="publisher" id="publisher">
-      </div>
-      <div>
-        <label for="month">Kuukausi:</label>
-        <input type="text" name="month" id="month">
-      </div>
-      <div>
-        <label for="note">Merkintä:</label>
-        <input type="text" name="note" id="note">
-      </div>
-      <div>
-        <label for="annote">Annotaatio:</label>
-        <input type="text" name="annote" id="annote">
-      </div>
-      <p style="color: red; font-size: 14px; margin-top: 10px;">*Punaiset kentät ovat pakollisia</p>
-      <button type="submit">Lisää</button>
+    <label for="content">Otsikko:</label>
+    <input style="border: 3px solid #f44336" type="text" name="title" id="title" >
+    <br>
+    <label for="content">Kirjoittanut:</label>
+    <input style="border: 3px solid #f44336" type="text" name="author" id="author" >
+    <br>
+    <label for="content">Painosvuosi:</label>
+    <input type="text" name="year" id="year" >
+    <br>
+    <label for="content">Kirjaotsikko:</label>
+    <input type="text" name="booktitle" id="booktitle" >
+    <input type="hidden" name="reference_type" value="{{ reference_type }}"/>
+    <br>
+    <label for="content">Editoija:</label>
+    <input type="text" name="editor" id="editor" >
+    <br>
+    <label for="content">Voluumi:</label>
+    <input type="text" name="volume" id="volume" >
+    <br>
+    <label for="content">Numero:</label>
+    <input type="text" name="number" id="number" >
+    <br>
+    <label for="content">Sarja:</label>
+    <input type="text" name="series" id="series" >
+    <br>
+    <label for="content">Sivut:</label>
+    <input type="text" name="pages" id="pages" >
+    <br>
+    <label for="content">Osoite:</label>
+    <input type="text" name="address" id="address" >
+    <br>
+    <label for="content">Organisaatio:</label>
+    <input type="text" name="organization" id="organization" >
+    <br>
+    <label for="content">Kustantaja:</label>
+    <input type="text" name="publisher" id="publisher" >
+    <br>
+    <label for="content">Kuukausi:</label>
+    <input type="text" name="month" id="month" >
+    <br>
+    <label for="content">Merkintä:</label>
+    <input type="text" name="note" id="note" >
+    <br>
+    <label for="content">Annotaatio:</label>
+    <input type="text" name="annote" id="annote" >
+    <br>
+    <p style="color: red; font-size: 14px; margin-top: 10px;">*Punaiset kentät ovat pakollisia</p>
+    <button type="submit">
+      Lisää
+    </button>
   </form>
 </div>
 
