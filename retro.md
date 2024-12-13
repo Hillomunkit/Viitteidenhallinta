@@ -17,3 +17,13 @@ Käytettiin taas tomivaksi todettua start, stop, continue, more of, less of meto
 - Vähemmän vaihdellaan taskin tekijöitä kesken kaiken, jos näin käynyt
 - Jaetaan taskit tasaisemmin
 - 
+
+## Sprint 3
+
+Käytettiin jälleen kerran hyväksi todettua start, stop, continue, more of, less of metodia. Tärkeimmät huomiot:
+- Yritetään puskea mainiin vielä pienempiä committeja, sillä jotkut commitit olivat aika isoja
+- Ei tehdä enää viime hetken muutoksia koodiin ennen asiakastapaamisia
+- Yritetään paremmin ylläpitää koodin sisäistä laatua
+- Enemmän dailyja, jotta kaikki ovat samalla sivulla projektin edistymisen suhteen
+- Tehdään selkeä työnjako heti sprintin alussa, jotta työkuorma jakautuisi paremmin
+- Jatketaan hyväksi koettua pariohjelmointia
