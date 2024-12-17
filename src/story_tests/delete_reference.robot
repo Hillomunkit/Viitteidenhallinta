@@ -44,30 +44,3 @@ A Inproceedings Reference Can Be Deleted
     Page Should Not Contain  Inpro1, author-testi, Inproname, 2022
 
 *** Keywords ***
-Set Title
-    [Arguments]  ${title}
-    Input Text  title  ${title}
-
-Set Author
-    [Arguments]  ${author}
-    Input Text  author  ${author}
-
-Set Year
-    [Arguments]  ${year}
-    Input Text  year  ${year}
-
-Set Journal
-    [Arguments]  ${journal}
-    Input Text  journal  ${journal}
-
-Set Volume
-    [Arguments]  ${volume}
-    Input Text  volume  ${volume}
-
-Set Pages
-    [Arguments]  ${pages}
-    Input Text  pages  ${pages}
-
-Set Booktitle
-    [Arguments]  ${booktitle}
-    Input Text  booktitle  ${booktitle}

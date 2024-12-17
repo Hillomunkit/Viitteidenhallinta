@@ -1,207 +1,171 @@
 {% extends "layout.html" %}
 
-{% block title %}
-Lisää viite
-{% endblock %}
 
 {% block body %}
+<h2 style="font-family: Arial">Valitse viitetyyppi</h2>
+<div class="topnav">
+  <form action="/choose_reference" method="post">
+    <input type="hidden" name="reference_type" value="book">
+    <button type="submit">Kirja</button>
+  </form>
 
-<h2>Valitse viitetyyppi</h2>
+  <form action="/choose_reference" method="post">
+    <input type="hidden" name="reference_type" value="article">
+    <button type="submit">Artikkeli</button>
+  </form>
 
-<form action="/choose_reference" method="post">
-  <input type="hidden" name="reference_type" value="book">
-  <button type="submit">Kirja</button>
-</form>
-
-<form action="/choose_reference" method="post">
-  <input type="hidden" name="reference_type" value="article">
-  <button type="submit">Artikkeli</button>
-</form>
-
-<form action="/choose_reference" method="post">
-  <input type="hidden" name="reference_type" value="inproceedings">
-  <button type="submit">Inproceedings</button>
-</form>
+  <form action="/choose_reference" method="post">
+    <input type="hidden" name="reference_type" value="inproceedings">
+    <button type="submit">Inproceedings</button>
+  </form>
+  <a style="font-family: Arial" href="/">Takaisin</a>
+</div>
+<br>
 
 {% if reference_type == "book" %}
 
-  <h2>Lisää kirjaviite</h2>
+  <h3 style="font-family: Arial">Lisää kirjaviite</h3>
 
-  <form action="/create_reference" method="post">
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <ul>
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
+  {% with messages = get_flashed_messages(with_categories=True) %}
+  {% if messages %}
+    {% for category, message in messages %}
+    <div class="flash-message flash-{{ category }}">
+      {{ message }}
+    </div>
+    {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+<div class="box">
+  <form action="/create_reference" method="post" class="reference-form">
     <label for="content">Teos:</label>
-    <input type="text" name="title" id="title" >
-    <br>
+    <input style="border: 3px solid #f44336" type="text" name="title" id="title" >
     <label for="content">Kirjoittanut:</label>
-    <input type="text" name="author" id="author" >
-    <br>
+    <input style="border: 3px solid #f44336" type="text" name="author" id="author" >
+    <label for="content">Painosvuosi:</label>
+    <input style="border: 3px solid #f44336" type="text" name="year" id="year" >
     <label for="content">Kustantaja:</label>
     <input type="text" name="publisher" id="publisher" >
-    <br>
-    <label for="content">Painosvuosi:</label>
-    <input type="text" name="year" id="year" >
     <input type="hidden" name="reference_type" value="{{ reference_type }}"/>
-    <br>
-    <label for="content">Voluumi:</label>
+    <label for="content">Volyymi:</label>
     <input type="text" name="volume" id="volume" >
-    <br>
     <label for="content">Numero:</label>
     <input type="text" name="number" id="number" >
-    <br>
     <label for="content">Sarja:</label>
     <input type="text" name="series" id="series" >
-    <br>
     <label for="content">Osoite:</label>
     <input type="text" name="address" id="address" >
-    <br>
     <label for="content">Painos:</label>
     <input type="text" name="edition" id="edition" >
-    <br>
     <label for="content">Kuukausi:</label>
     <input type="text" name="month" id="month" >
-    <br>
     <label for="content">Merkintä:</label>
     <input type="text" name="note" id="note" >
-    <br>
     <label for="content">Annotaatio:</label>
     <input type="text" name="annote" id="annote" >
-    <br>
-  
+    <p style="color: red; font-size: 14px; margin-top: 10px;">*Punaiset kentät ovat pakollisia</p>
     <button type="submit">
       Lisää
     </button>
   </form>
+</div>
 
 {% elif reference_type == "article" %}
 
-<h2>Lisää artikkeliviite</h2>
+<h3 style="font-family: Arial">Lisää artikkeliviite</h3>
 
-<form action="/create_reference" method="post">
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul>
-      {% for message in messages %}
-        <li>{{ message }}</li>
-      {% endfor %}
-      </ul>
-    {% endif %}
-  {% endwith %}
-  <label for="content">Artikkeli:</label>
-  <input type="text" name="title" id="title" >
-  <br>
-  <label for="content">Kirjoittanut:</label>
-  <input type="text" name="author" id="author" >
-  <br>
-  <label for="content">Lehti:</label>
-  <input type="text" name="journal" id="journal" >
-  <br>
-  <label for="content">Painosvuosi:</label>
-  <input type="text" name="year" id="year" >
-  <br>
-  <label for="content">Volyymi:</label>
-  <input type="text" name="volume" id="volume" >
-  <br>
-  <label for="content">Sivut:</label>
-  <input type="text" name="pages" id="pages" >
-  <input type="hidden" name="reference_type" value="{{ reference_type }}"/>
-  <br>
-  <label for="content">Numero:</label>
-  <input type="text" name="number" id="number" >
-  <br>
-  <label for="content">Kuukausi:</label>
-  <input type="text" name="month" id="month" >
-  <br>
-  <label for="content">Merkintä:</label>
-  <input type="text" name="note" id="note" >
-  <br>
-  <label for="content">Annotaatio:</label>
-  <input type="text" name="annote" id="annote" >
-  <br>
-
-  <button type="submit">
-    Lisää
-  </button>
-</form>
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+  {% for category, message in messages %}
+  <div class="flash-message flash-{{ category }}">
+    {{ message }}
+  </div>
+  {% endfor %}
+{% endif %}
+{% endwith %}
+<div class="box">
+  <form action="/create_reference" method="post" class="reference-form">
+    <label for="content">Artikkeli:</label>
+    <input style="border: 3px solid #f44336" type="text" name="title" id="title" >
+    <label for="content">Kirjoittanut:</label>
+    <input style="border: 3px solid #f44336" type="text" name="author" id="author" >
+    <label for="content">Painosvuosi:</label>
+    <input style="border: 3px solid #f44336" type="text" name="year" id="year" >
+    <label for="content">Lehti:</label>
+    <input type="text" name="journal" id="journal" >
+    <label for="content">Volyymi:</label>
+    <input type="text" name="volume" id="volume" >
+    <label for="content">Sivut:</label>
+    <input type="text" name="pages" id="pages" >
+    <input type="hidden" name="reference_type" value="{{ reference_type }}"/>
+    <label for="content">Numero:</label>
+    <input type="text" name="number" id="number" >
+    <label for="content">Kuukausi:</label>
+    <input type="text" name="month" id="month" >
+    <label for="content">Merkintä:</label>
+    <input type="text" name="note" id="note" >
+    <label for="content">Annotaatio:</label>
+    <input type="text" name="annote" id="annote" >
+    <p style="color: red; font-size: 14px; margin-top: 10px;">*Punaiset kentät ovat pakollisia</p>
+    <button type="submit">
+      Lisää
+    </button>
+  </form>
+</div>
 
 {% elif reference_type == "inproceedings" %}
 
-<h2>Lisää inproceedings-viite</h2>
+<h3 style="font-family: Arial">Lisää inproceedings-viite</h3>
 
-<form action="/create_reference" method="post">
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul>
-      {% for message in messages %}
-        <li>{{ message }}</li>
-      {% endfor %}
-      </ul>
-    {% endif %}
-  {% endwith %}
-  <label for="content">Otsikko:</label>
-  <input type="text" name="title" id="title" >
-  <br>
-  <label for="content">Kirjoittanut:</label>
-  <input type="text" name="author" id="author" >
-  <br>
-  <label for="content">Painosvuosi:</label>
-  <input type="text" name="year" id="year" >
-  <br>
-  <label for="content">Kirjaotsikko:</label>
-  <input type="text" name="booktitle" id="booktitle" >
-  <input type="hidden" name="reference_type" value="{{ reference_type }}"/>
-  <br>
-  <label for="content">Editoija:</label>
-  <input type="text" name="editor" id="editor" >
-  <br>
-  <label for="content">Voluumi:</label>
-  <input type="text" name="volume" id="volume" >
-  <br>
-  <label for="content">Numero:</label>
-  <input type="text" name="number" id="number" >
-  <br>
-  <label for="content">Sarja:</label>
-  <input type="text" name="series" id="series" >
-  <br>
-  <label for="content">Sivut:</label>
-  <input type="text" name="pages" id="pages" >
-  <br>
-  <label for="content">Osoite:</label>
-  <input type="text" name="address" id="address" >
-  <br>
-  <label for="content">Organisaatio:</label>
-  <input type="text" name="organization" id="organization" >
-  <br>
-  <label for="content">Kustantaja:</label>
-  <input type="text" name="publisher" id="publisher" >
-  <br>
-  <label for="content">Kuukausi:</label>
-  <input type="text" name="month" id="month" >
-  <br>
-  <label for="content">Merkintä:</label>
-  <input type="text" name="note" id="note" >
-  <br>
-  <label for="content">Annotaatio:</label>
-  <input type="text" name="annote" id="annote" >
-  <br>
-
-
-  <button type="submit">
-    Lisää
-  </button>
-</form>
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+  {% for category, message in messages %}
+  <div class="flash-message flash-{{ category }}">
+    {{ message }}
+  </div>
+  {% endfor %}
+{% endif %}
+{% endwith %}
+<div class="box">
+  <form action="/create_reference" method="post" class="reference-form">
+    <label for="content">Otsikko:</label>
+    <input style="border: 3px solid #f44336" type="text" name="title" id="title" >
+    <label for="content">Kirjoittanut:</label>
+    <input style="border: 3px solid #f44336" type="text" name="author" id="author" >
+    <label for="content">Painosvuosi:</label>
+    <input style="border: 3px solid #f44336" type="text" name="year" id="year" >
+    <label for="content">Kirjaotsikko:</label>
+    <input type="text" name="booktitle" id="booktitle" >
+    <input type="hidden" name="reference_type" value="{{ reference_type }}"/>
+    <label for="content">Editoija:</label>
+    <input type="text" name="editor" id="editor" >
+    <label for="content">Volyymi:</label>
+    <input type="text" name="volume" id="volume" >
+    <label for="content">Numero:</label>
+    <input type="text" name="number" id="number" >
+    <label for="content">Sarja:</label>
+    <input type="text" name="series" id="series" >
+    <label for="content">Sivut:</label>
+    <input type="text" name="pages" id="pages" >
+    <label for="content">Osoite:</label>
+    <input type="text" name="address" id="address" >
+    <label for="content">Organisaatio:</label>
+    <input type="text" name="organization" id="organization" >
+    <label for="content">Kustantaja:</label>
+    <input type="text" name="publisher" id="publisher" >
+    <label for="content">Kuukausi:</label>
+    <input type="text" name="month" id="month" >
+    <label for="content">Merkintä:</label>
+    <input type="text" name="note" id="note" >
+    <label for="content">Annotaatio:</label>
+    <input type="text" name="annote" id="annote" >
+    <p style="color: red; font-size: 14px; margin-top: 10px;">*Punaiset kentät ovat pakollisia</p>
+    <button type="submit">
+      Lisää
+    </button>
+  </form>
+</div>
 
 {% endif %}
-
-<div>
-  <a href="/">Takaisin</a>
-</div>
 
 {% endblock %}

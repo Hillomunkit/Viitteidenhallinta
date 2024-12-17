@@ -178,36 +178,13 @@ def create_inproceedings_reference(
     )
     db.session.commit()
 
-def delete_book_reference(reference_id):
-    sql = """
+def delete_reference(table_name, reference_id):
+    sql = f"""
     DELETE FROM
-        books
+        {table_name}
     WHERE
         id = :reference_id
     """
-
-    db.session.execute(text(sql), {"reference_id": reference_id})
-    db.session.commit()
-
-def delete_article_reference(reference_id):
-    sql = """
-    DELETE FROM
-        articles
-    WHERE
-        id = :reference_id
-    """
-
-    db.session.execute(text(sql), {"reference_id": reference_id})
-    db.session.commit()
-
-def delete_inproceedings_reference(reference_id):
-    sql = """
-    DELETE FROM
-        inproceedings
-    WHERE
-        id = :reference_id
-    """
-
     db.session.execute(text(sql), {"reference_id": reference_id})
     db.session.commit()
 

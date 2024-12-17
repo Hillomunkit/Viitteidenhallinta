@@ -8,6 +8,7 @@ titles = {"book": "Teos",
           "inproceedings": "Otsikko",
         }
 
+
 def validate_reference(title, author, year, reference_type,
                        journal=None, volume=None, pages=None, booktitle=None):
     if not title.strip():
@@ -15,11 +16,14 @@ def validate_reference(title, author, year, reference_type,
     if len(title) > 100:
         raise UserInputError(f"\"{titles[reference_type]}\" maksimipituus on 100 merkkiä")
     if not author.strip():
+
         raise UserInputError("\"Kirjoittanut\" ei voi olla tyhjä")
     if len(author) > 100:
         raise UserInputError("\"Kirjoittanut\" maksimipituus on 100 merkkiä")
     if not re.match(r"^[a-zA-ZåäöÅÄÖ\s'-]+$", author):
         raise UserInputError("\"Kirjoittanut\" sisältää virheellisiä merkkejä")
+    
+def validate_year(year):
     current_year = datetime.now().year
     try:
         year_int = int(year)
@@ -27,6 +31,7 @@ def validate_reference(title, author, year, reference_type,
         raise UserInputError("\"Painovuosi\" tulee esittää numeroina")
     if year_int < 1000 or year_int > current_year:
         raise UserInputError(f"\"Painovuosi\" tulee olla 1000-{current_year} väliltä")
+
     if journal:
         if not journal.strip():
             raise UserInputError(f"\"Lehti\" ei voi olla pelkkiä välilyöntejä")

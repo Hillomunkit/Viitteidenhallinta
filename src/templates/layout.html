@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
   <head>
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <title>{% block title %}{% endblock %}</title>
+    <title>Viitteidenhallinta {% block title %}{% endblock %}</title>
+    <a href="/" style="color: black;text-decoration: none"><h1 style="font-family: Arial">Viitteidenhallinta</h1></a>
     <style>
       .flash-message {
           display: inline-block;
@@ -19,11 +20,139 @@
       .flash-success {
           background-color: green;
           color: white;
+          animation: fadeOut 5s forwards;
       }
       .flash-error {
           background-color: red;
           color: white;
+          animation: fadeOut 5s forwards;
       }
+      @keyframes fadeOut {
+          0% { opacity: 1; }
+          100% { opacity: 0; display: none; }
+      }
+      /* Style the top navigation bar */
+      .topnav {
+          overflow: hidden;
+          background-color: #333;
+      }
+      /* Style the topnav buttons */
+      .topnav button {
+          float: left;
+          display: block;
+          background-color: #333;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+      }
+      /* Style the topnav links */
+      .topnav a {
+          float: left;
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 15px 32px;
+          text-decoration: none;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+      }
+      /* style for inputs on new_reference and index */
+        .box {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .box label {
+            font-family: Arial;
+            margin: 2px 0;
+            width: 100px;
+            padding: 2px 3px;
+            text-align: left;
+        }
+
+        .box input {
+            margin: 2px 0;
+            padding: 2px 3px;
+            width: calc(100% - 120px);
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .box div {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 10px;
+        }
+
+        .box button {
+            background-color: white;
+            color: black;
+            border: 2px solid #333;
+            font-size: 16px;
+            padding: 8px 25px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: background-color 0.4s, color 0.4s;
+        }
+
+        .box button:hover {
+            background-color: #333;
+            color: white;
+        }
+        .searchContent {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: left;
+            align-items: flex-start;
+        }
+
+        .searchContent pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+        }
+
+        button {
+            background-color: white;
+            color: black;
+            border: 2px solid #333;
+            font-size: 16px;
+            padding: 8px 25px;
+            cursor: pointer;
+            transition: background-color 0.4s, color 0.4s;
+        }
+
+        button:hover {
+            background-color: #333;
+            color: white;
+        }
+        .reference-form label,
+        .reference-form input {
+            display: block;
+            width: 80%;
+            margin-bottom: 0px;
+        }
+
+        .reference-form input {
+            padding: 8px;
+            margin-top: 0px;
+        }   
+
+        ul {
+            list-style-type: none;
+        }
+
     </style>
   </head>
   <body>
