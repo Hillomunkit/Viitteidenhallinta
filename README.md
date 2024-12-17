@@ -66,4 +66,4 @@ After submitting a reference, you can:
 
 ### 4. Testing
 * Newly implemented features have corresponding automated tests
-* The code's test coverage is at a reasonable level
+* The codes test coverage is at a reasonable level
