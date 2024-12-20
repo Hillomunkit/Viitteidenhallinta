@@ -1,6 +1,8 @@
 # Viitteidenhallinta <br>
 [Backlog](https://docs.google.com/spreadsheets/d/1ynXuHdp9rR2oDtbcrOBZir3f2yQD1G3NdnaW-2tr-l4/edit?gid=1#gid=1)
 
+[Miniprojektin raportti](https://github.com/Hillomunkit/Viitteidenhallinta/blob/main/raportti.md)
+
 [![GHA_workflow_badge](https://github.com/Hillomunkit/Viitteidenhallinta/workflows/CI/badge.svg)](https://github.com/Hillomunkit/Viitteidenhallinta/actions)
 [![codecov](https://codecov.io/github/Hillomunkit/Viitteidenhallinta/graph/badge.svg?token=KGOW38AQWE)](https://codecov.io/github/Hillomunkit/Viitteidenhallinta)
 
